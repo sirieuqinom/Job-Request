@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("select").change(function(){
+            $(this).find("option:selected").each(function(){
+                var optionValue = $(this).attr("value");
+                if(optionValue){
+                    $(".REQUEST").not("."+optionValue).hide();
+                    $("."+optionValue).show();
+                }else{
+                    $(".REQUEST").hide();
+                }
+            });
+        }).change();
+    });
+</script>
+<body>
+    <form action="insert.php" method="post">
+        <div>
+            <select name="request" id="request">
+                <option value="0" selected hidden >Select an option</option>
+                <option value="daily_time_record">Daily Time Record</option>
+                <option value="biometric_record">Biometric Record</option>
+                <option value="reset_password">Reset Password</option>
+                <option value="telephone_repair">Telephone Repair</option>
+                <option value="software_installation">Software Installation</option>
+                <option value="internet_connection">Internet Connection</option>
+                <option value="publication_update_of_info_in_website">Publication/Update of info in Website</option>
+                <option value="ict_repair_equipment">ICT repair equipment</option>
+                <option value="others">Others</option>
+            </select>
+        </div>
+        <div class="daily_time_record REQUEST">
+            <label for="req_date_dtr">Enter requested date for Daily time record </label><br>
+            <input type="text" name="req_date_dtr" id="req_date_dtr"><br>
+            <label for="bio_num_dtr">Enter your Biometrics number </label><br>
+            <input type="text" name="bio_num_dtr" id="bio_num_dtr"><br>
+        </div>
+        <div class="biometric_record REQUEST">
+            <label for="req_date_bio">Enter requested date for Biometrics record</label><br>
+            <input type="text" name="req_date_bio" id="req_date_bio"><br>
+            <label for="bio_num_bio">Enter your Biometrics number </label><br>
+            <input type="text" name="bio_num_bio" id="bio_num_bio"><br>
+        </div>
+        <div class="reset_password REQUEST">
+            <input type="radio" name="account_type" id="tup_portal" value="tup_portal">
+            <label for="tup_portal">TUP Portal</label><br>
+            <input type="radio" name="account_type" id="tup_official_email" value="tup_official_email">
+            <label for="tup_official_email">TUP Official Email</label><br>
+            <input type="radio" name="account_type" id="tup_web_ers" value="tup_web_ers">
+            <label for="tup_web_ers">TUP Web ERS</label><br>
+            <input type="radio" name="account_type" id="ers_old" value="ers_old">
+            <label for="ers_old">ERS [old]</label><br>
+
+            <label for="attatched_email">Enter an Email address</label><br>
+            <input type="email" name="attatched_email" id="attatched_email"><br>
+            <label for="attatched_id">Enter ID number</label><br>
+            <input type="text" name="attatched_id" id="attatched_id">
+        </div>
+        <div class="telephone_repair REQUEST">
+            <input type="radio" name="department_tel" id="cos" value="cos">
+            <label for="cos">COS</label>
+            <input type="radio" name="department_tel" id="cla" value="cla">
+            <label for="cla">CLA</label>
+            <input type="radio" name="department_tel" id="cie" value="cie">
+            <label for="cie">CIE</label>
+            <input type="radio" name="department_tel" id="cafa" value="cafa">
+            <label for="cafa">CAFA</label>
+            <input type="radio" name="department_tel" id="coe" value="coe">
+            <label for="coe">COE</label>
+            <input type="radio" name="department_tel" id="cit" value="cit">
+            <label for="cit">CIT</label>
+            <input type="radio" name="department_tel" id="irtc" value="irtc">
+            <label for="irtc">IRTC</label>
+            <br>
+            <label for="local_num">Enter the local telephone number</label><br>
+            <input type="number" name="local_num" id="local_num">
+        </div>
+        <div class="software_installation REQUEST">
+            <input type="radio" name="department_install" id="cos" value="cos">
+            <label for="cos">COS</label>
+            <input type="radio" name="department_install" id="cla" value="cla">
+            <label for="cla">CLA</label>
+            <input type="radio" name="department_install" id="cie" value="cie">
+            <label for="cie">CIE</label>
+            <input type="radio" name="department_install" id="cafa" value="cafa">
+            <label for="cafa">CAFA</label>
+            <input type="radio" name="department_install" id="coe" value="coe">
+            <label for="coe">COE</label>
+            <input type="radio" name="department_install" id="cit" value="cit">
+            <label for="cit">CIT</label>
+            <input type="radio" name="department_install" id="irtc" value="irtc">
+            <label for="irtc">IRTC</label>
+            <br>
+            <label for="software_type">Enter software to be installed</label><br>
+            <input type="text" name="software_type" id="software_type">
+        </div>
+        <div class="internet_connection REQUEST">
+            <input type="radio" name="department" id="cos">
+            <label for="cos">COS</label>
+            <input type="radio" name="department" id="cla">
+            <label for="cla">CLA</label>
+            <input type="radio" name="department" id="cie">
+            <label for="cie">CIE</label>
+            <input type="radio" name="department" id="cafa">
+            <label for="cafa">CAFA</label>
+            <input type="radio" name="department" id="coe">
+            <label for="coe">COE</label>
+            <input type="radio" name="department" id="cit">
+            <label for="cit">CIT</label>
+            <input type="radio" name="department" id="irtc">
+            <label for="irtc">IRTC</label>
+            <br>
+        </div>
+        <div class="publication_update_of_info_in_website REQUEST">
+            <input type="radio" name="department" id="cos">
+            <label for="cos">COS</label>
+            <input type="radio" name="department" id="cla">
+            <label for="cla">CLA</label>
+            <input type="radio" name="department" id="cie">
+            <label for="cie">CIE</label>
+            <input type="radio" name="department" id="cafa">
+            <label for="cafa">CAFA</label>
+            <input type="radio" name="department" id="coe">
+            <label for="coe">COE</label>
+            <input type="radio" name="department" id="cit">
+            <label for="cit">CIT</label>
+            <input type="radio" name="department" id="irtc">
+            <label for="irtc">IRTC</label>
+            <br>
+        </div>
+        <div class="ict_repair_equipment REQUEST">
+            <input type="radio" name="department" id="cos">
+            <label for="cos">COS</label>
+            <input type="radio" name="department" id="cla">
+            <label for="cla">CLA</label>
+            <input type="radio" name="department" id="cie">
+            <label for="cie">CIE</label>
+            <input type="radio" name="department" id="cafa">
+            <label for="cafa">CAFA</label>
+            <input type="radio" name="department" id="coe">
+            <label for="coe">COE</label>
+            <input type="radio" name="department" id="cit">
+            <label for="cit">CIT</label>
+            <input type="radio" name="department" id="irtc">
+            <label for="irtc">IRTC</label>
+            <br>
+            <label for="specify_problem">Please specify the problem</label><br>
+            <textarea name="specify_problem" id="specify_problem" cols="30" rows="10"></textarea><br>
+        </div>
+        <div class="others REQUEST">
+            <input type="radio" name="department" id="cos">
+            <label for="cos">COS</label>
+            <input type="radio" name="department" id="cla">
+            <label for="cla">CLA</label>
+            <input type="radio" name="department" id="cie">
+            <label for="cie">CIE</label>
+            <input type="radio" name="department" id="cafa">
+            <label for="cafa">CAFA</label>
+            <input type="radio" name="department" id="coe">
+            <label for="coe">COE</label>
+            <input type="radio" name="department" id="cit">
+            <label for="cit">CIT</label>
+            <input type="radio" name="department" id="irtc">
+            <label for="irtc">IRTC</label>
+            <br>
+            <label for="specify_request">Please specify</label><br>
+            <textarea name="specify_request" id="specify_request" cols="30" rows="10"></textarea><br>
+        </div>
+        <br>
+        <button type="submit" name="submit">Submit Request</button>
+        <br>
+    </form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<div class="reset_password REQUEST">
+            <input type="radio" name="account_type" id="tup_portal" value="tup_portal">
+            <label for="tup_portal">TUP Portal</label><br>
+            <input type="radio" name="account_type" id="tup_official_email" value="tup_official_email">
+            <label for="tup_official_email">TUP Official Email</label><br>
+            <input type="radio" name="account_type" id="tup_web_ers" value="tup_web_ers">
+            <label for="tup_web_ers">TUP Web ERS</label><br>
+            <input type="radio" name="account_type" id="ers_old" value="ers_old">
+            <label for="ers_old">ERS [old]</label><br>
+
+            <label for="attatched_email">Enter an Email address</label><br>
+            <input type="email" name="attatched_email" id="attatched_email"><br>
+            <label for="attatched_id">Enter ID number</label><br>
+            <input type="text" name="attatched_id" id="attatched_id">
+        </div>
+
+
+
+php
+
+
+        $account_type = $_POST['account_type'];
+        $attatched_email = $_POST['attatched_email'];
+        $attatched_id = $_POST['attatched_id'];
