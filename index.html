@@ -59,6 +59,7 @@
             </div>  
         </form>
         <form action="insert.php" method="post" class="reset_password REQUEST">
+            <input type="text" name="request" id="request" value="reset password" readonly hidden>
             <label>Choose account type</label>
             <div>
                 <input type="radio" name="account_type" id="tup_portal" value="tup_portal">
@@ -86,20 +87,20 @@
             <input type="text" name="request" id="request" value="telephone repair" readonly hidden>
             <label>Choose a department</label><br>
 
-            <input type="radio" name="department_tel" id="cos" value="cos">
-            <label for="cos">COS</label>
-            <input type="radio" name="department_tel" id="cla" value="cla">
-            <label for="cla">CLA</label>
-            <input type="radio" name="department_tel" id="cie" value="cie">
-            <label for="cie">CIE</label>
-            <input type="radio" name="department_tel" id="cafa" value="cafa">
-            <label for="cafa">CAFA</label>
-            <input type="radio" name="department_tel" id="coe" value="coe">
-            <label for="coe">COE</label>
-            <input type="radio" name="department_tel" id="cit" value="cit">
-            <label for="cit">CIT</label>
-            <input type="radio" name="department_tel" id="irtc" value="irtc">
-            <label for="irtc">IRTC</label>
+            <input type="radio" name="department_tel" id="cos tel" value="cos">
+            <label for="cos tel">COS</label>
+            <input type="radio" name="department_tel" id="cla tel" value="cla">
+            <label for="cla tel">CLA</label>
+            <input type="radio" name="department_tel" id="cie tel" value="cie">
+            <label for="cie tel">CIE</label>
+            <input type="radio" name="department_tel" id="cafa tel" value="cafa">
+            <label for="cafa tel">CAFA</label>
+            <input type="radio" name="department_tel" id="coe tel" value="coe">
+            <label for="coe tel">COE</label>
+            <input type="radio" name="department_tel" id="cit tel" value="cit">
+            <label for="cit tel">CIT</label>
+            <input type="radio" name="department_tel" id="irtc tel" value="irtc">
+            <label for="irtc tel">IRTC</label>
             <br>
             
             <label for="local_number">
@@ -114,20 +115,20 @@
             <input type="text" name="request" id="request" value="software installation" readonly hidden>
             <label>Choose a department</label><br>
 
-            <input type="radio" name="software_installation" id="cos" value="cos">
-            <label for="cos">COS</label>
-            <input type="radio" name="software_installation" id="cla" value="cla">
-            <label for="cla">CLA</label>
-            <input type="radio" name="software_installation" id="cie" value="cie">
-            <label for="cie">CIE</label>
-            <input type="radio" name="software_installation" id="cafa" value="cafa">
-            <label for="cafa">CAFA</label>
-            <input type="radio" name="software_installation" id="coe" value="coe">
-            <label for="coe">COE</label>
-            <input type="radio" name="software_installation" id="cit" value="cit">
-            <label for="cit">CIT</label>
-            <input type="radio" name="software_installation" id="irtc" value="irtc">
-            <label for="irtc">IRTC</label>
+            <input type="radio" name="software_installation" id="cos soft" value="cos">
+            <label for="cos soft">COS</label>
+            <input type="radio" name="software_installation" id="cla soft" value="cla">
+            <label for="cla soft">CLA</label>
+            <input type="radio" name="software_installation" id="cie soft" value="cie">
+            <label for="cie soft">CIE</label>
+            <input type="radio" name="software_installation" id="cafa soft" value="cafa">
+            <label for="cafa soft">CAFA</label>
+            <input type="radio" name="software_installation" id="coe soft" value="coe">
+            <label for="coe soft">COE</label>
+            <input type="radio" name="software_installation" id="cit soft" value="cit">
+            <label for="cit soft">CIT</label>
+            <input type="radio" name="software_installation" id="irtc soft" value="irtc">
+            <label for="irtc soft">IRTC</label>
             <br>
 
             <label for="software">
@@ -142,21 +143,100 @@
             <input type="text" name="request" id="request" value="internet connection" readonly hidden>
             <label>Choose a department</label><br>
 
-            <input type="radio" name="internet_connection" id="cos" value="cos">
-            <label for="cos">COS</label>
-            <input type="radio" name="internet_connection" id="cla" value="cla">
-            <label for="cla">CLA</label>
-            <input type="radio" name="internet_connection" id="cie" value="cie">
-            <label for="cie">CIE</label>
-            <input type="radio" name="internet_connection" id="cafa" value="cafa">
-            <label for="cafa">CAFA</label>
-            <input type="radio" name="internet_connection" id="coe" value="coe">
-            <label for="coe">COE</label>
-            <input type="radio" name="internet_connection" id="cit" value="cit">
-            <label for="cit">CIT</label>
-            <input type="radio" name="internet_connection" id="irtc" value="irtc">
-            <label for="irtc">IRTC</label>
+            <input type="radio" name="internet_connection" id="cos net" value="cos">
+            <label for="cos net">COS</label>
+            <input type="radio" name="internet_connection" id="cla net" value="cla">
+            <label for="cla net">CLA</label>
+            <input type="radio" name="internet_connection" id="cie net" value="cie">
+            <label for="cie net">CIE</label>
+            <input type="radio" name="internet_connection" id="cafa net" value="cafa">
+            <label for="cafa net">CAFA</label>
+            <input type="radio" name="internet_connection" id="coe net" value="coe">
+            <label for="coe net">COE</label>
+            <input type="radio" name="internet_connection" id="cit net" value="cit">
+            <label for="cit net">CIT</label>
+            <input type="radio" name="internet_connection" id="irtc net" value="irtc">
+            <label for="irtc net">IRTC</label>
             <br>
+            <div>
+                <br><button type="submit" name="submit">Submit</button>
+            </div>
+        </form>
+        <form action="insert.php" method="post" class="publication_update_of_info_in_website REQUEST">
+            <input type="text" name="request" id="request" value="publication update of info in website" readonly hidden>
+            <label>Choose a department</label><br>
+
+            <input type="radio" name="publication_update_of_info_in_website" id="cos pub" value="cos">
+            <label for="cos pub">COS</label>
+            <input type="radio" name="publication_update_of_info_in_website" id="cla pub" value="cla">
+            <label for="cla pub">CLA</label>
+            <input type="radio" name="publication_update_of_info_in_website" id="cie pub" value="cie">
+            <label for="cie pub">CIE</label>
+            <input type="radio" name="publication_update_of_info_in_website" id="cafa pub" value="cafa">
+            <label for="cafa pub">CAFA</label>
+            <input type="radio" name="publication_update_of_info_in_website" id="coe pub" value="coe">
+            <label for="coe pub">COE</label>
+            <input type="radio" name="publication_update_of_info_in_website" id="cit pub" value="cit">
+            <label for="cit pub">CIT</label>
+            <input type="radio" name="publication_update_of_info_in_website" id="irtc pub" value="irtc">
+            <label for="irtc pub">IRTC</label>
+            <br>
+            <div>
+                <br><button type="submit" name="submit">Submit</button>
+            </div>
+        </form>
+        <form action="insert.php" method="post" class="ict_repair_equipment REQUEST">
+            <input type="text" name="request" id="request" value="ict repair equipment" readonly hidden>
+            <label>Choose a department</label><br>
+
+            <input type="radio" name="ict_repair_equipment" id="cos rep" value="cos">
+            <label for="cos rep">COS</label>
+            <input type="radio" name="ict_repair_equipment" id="cla rep" value="cla">
+            <label for="cla rep">CLA</label>
+            <input type="radio" name="ict_repair_equipment" id="cie rep" value="cie">
+            <label for="cie rep">CIE</label>
+            <input type="radio" name="ict_repair_equipment" id="cafa rep" value="cafa">
+            <label for="cafa rep">CAFA</label>
+            <input type="radio" name="ict_repair_equipment" id="coe rep" value="coe">
+            <label for="coe rep">COE</label>
+            <input type="radio" name="ict_repair_equipment" id="cit rep" value="cit">
+            <label for="cit rep">CIT</label>
+            <input type="radio" name="ict_repair_equipment" id="irtc rep" value="irtc">
+            <label for="irtc rep">IRTC</label>
+            <br>
+
+            <label for="specified_problem">
+                Please Specify Problem <br>
+                <input type="text" name="specified_problem" id="specified_problem" required>
+            </label>
+            <div>
+                <br><button type="submit" name="submit">Submit</button>
+            </div>
+        </form>
+        <form action="insert.php" method="post" class="others REQUEST">
+            <input type="text" name="request" id="request" value="others" readonly hidden>
+            <label>Choose a department</label><br>
+
+            <input type="radio" name="others" id="cos oth" value="cos">
+            <label for="cos oth">COS</label>
+            <input type="radio" name="others" id="cla oth" value="cla">
+            <label for="cla oth">CLA</label>
+            <input type="radio" name="others" id="cie oth" value="cie">
+            <label for="cie oth">CIE</label>
+            <input type="radio" name="others" id="cafa oth" value="cafa">
+            <label for="cafa oth">CAFA</label>
+            <input type="radio" name="others" id="coe oth" value="coe">
+            <label for="coe oth">COE</label>
+            <input type="radio" name="others" id="cit oth" value="cit">
+            <label for="cit oth">CIT</label>
+            <input type="radio" name="others" id="irtc oth" value="irtc">
+            <label for="irtc oth">IRTC</label>
+            <br>
+
+            <label for="specified_request">
+                Please Specify your Request <br>
+                <input type="text" name="specified_request" id="specified_request" required>
+            </label>
             <div>
                 <br><button type="submit" name="submit">Submit</button>
             </div>

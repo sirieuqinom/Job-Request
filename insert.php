@@ -1,6 +1,6 @@
 <?php
 
-    $conn = mysqli_connect("localhost","root","","request_form");
+    include "config.php";
 
     if(isset($_POST['submit'])){
         $request = $_POST['request'];
@@ -10,22 +10,49 @@
         }
        
         if($request == "biometric record"){
-            $date == $_POST['bio_date'];
+            $date = $_POST['bio_date'];
+        }
+
+        if($request == "reset password"){
+            $account_type = $_POST['account_type'];
+            $provided_email = $_POST['provided_email'];
+            $provided_id = $_POST['provided_id'];
+        }
+
+        if($request == "telephone repair"){
+            $dept = $_POST['department_tel'];
+            $local_number = $_POST['local_number'];
+        }
+        
+        if($request == "software installation"){
+            $dept = $_POST['software_installation'];
+            $software = $_POST['software'];
+        }
+        
+        if($request == "internet connection"){
+            $dept = $_POST['internet_connection'];
+        }
+
+        if($request == "publication update of info in website"){
+            $dept = $_POST['publication_update_of_info_in_website'];
+        }
+
+        if($request == 'ict repair equipment'){
+            $dept = $_POST['ict_repair_equipment'];
+            $problem = $_POST['specified_problem'];
+        }
+
+        if($request == "others"){
+            $dept = $_POST['others'];
+            $problem = $_POST['specified_request'];
         }
        
-        $account_type = $_POST['account_type'];
-        $provided_email = $_POST['provided_email'];
-        $provided_id = $_POST['provided_id'];
-        $dept = $_POST['department_tel'];
-        $local_number = $_POST['local_number'];
-        $dept = $_POST['software_installation'];
-        $software = $_POST['software'];
-        $dept = $_POST['internet_connection'];
-
         $sql = "INSERT into requests 
-                (request,dates,account_type,provided_email,provided_id,dept,local_number,software) 
+                (request,dates,account_type,provided_email,provided_id,
+                dept,local_number,software,problem) 
                 VALUES 
-                ('$request','$date','$account_type','$provided_email','$provided_id','$dept','$local_number',' $software')";
+                ('$request','$date','$account_type','$provided_email','$provided_id',
+                '$dept','$local_number','$software','$problem')";
         $query = mysqli_query($conn,$sql);
 
         if($query){
