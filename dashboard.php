@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
     <?php 
@@ -21,28 +22,28 @@
 
     ?>
 
-    <table>
-        <thead>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
             <tr>
-                <th>ID</th>
-                <th>REQUESTS</th>
-                <th>DATES</th>
-                <th>ACCOUNT TYPE</th>
-                <th>PROVIDED EMAIL</th>
-                <th>PROVIDED ID</th>
-                <th>LOCAL NUMBER</th>
-                <th>SOFTWARE</th>
-                <th>DEPARTMENT</th>
-                <th>PROBLEM</th>
+                <th scope="col">ID</th>
+                <th scope="col">REQUESTS</th>
+                <th scope="col">DATES</th>
+                <th scope="col">ACCOUNT TYPE</th>
+                <th scope="col">PROVIDED EMAIL</th>
+                <th scope="col">PROVIDED ID</th>
+                <th scope="col">LOCAL NUMBER</th>
+                <th scope="col">SOFTWARE</th>
+                <th scope="col">DEPARTMENT</th>
+                <th scope="col">PROBLEM</th>
             </tr>
         </thead>
 
         <tbody>
             <?php 
-            
+                $num = 1;
                 if($sqlQuery){
                     while($row=mysqli_fetch_assoc($sqlQuery)){
-                        $id = $row['id'];
+                        $id = $num;
                         $request = $row['request'];
                         $dates = $row['dates'];
                         $type = $row['account_type'];
@@ -55,7 +56,7 @@
 
                         echo '
                         <tr>
-                          <td>'.$id.'</td>
+                          <th scope="row">'.$id.'</th>
                           <td>'.$request.'</td>
                           <td>'.$dates.'</td>
                           <td>'.$type.'</td>
@@ -67,6 +68,7 @@
                           <td>'.$problem.'</td>
                         </tr>
                         ';
+                        $num++;
                     }
                 }
             
