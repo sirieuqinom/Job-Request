@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Request form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <title>Request form</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
@@ -24,16 +26,16 @@
     });
 </script>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.php">Job Request</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    <nav CLAss="navbar navbar-expand-lg navbar-light bg-light">
+        <a CLAss="navbar-brand" href="index.php">Job Request</a>
+        <button CLAss="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span CLAss="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="index.php">Dashboard</a>
-                <a class="nav-item nav-link active" href="#">Submit request</a>
-                <a class="nav-item nav-link" href="#">Logout</a>
+        <div CLAss="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div CLAss="navbar-nav">
+                <a CLAss="nav-item nav-link" href="index.php">Dashboard</a>
+                <a CLAss="nav-item nav-link active" href="#">Submit request</a>
+                <a CLAss="nav-item nav-link" href="logout.php">Logout</a>
             </div>
         </div>
     </nav>
@@ -52,7 +54,7 @@
         </select>
     </div>
     <div>
-        <form action="insert.php" method="post" class="daily_time_record REQUEST">
+        <form action="insert.php" method="post" CLAss="daily_time_record REQUEST">
             <input type="text" name="request" id="request" value="daily time record" readonly hidden>
             <label for="dtr_date">
                 Enter Requested Date <br>
@@ -62,7 +64,7 @@
                 <br><button type="submit" name="submit">Submit</button>
             </div>
         </form>
-        <form action="insert.php" method="post" class="biometric_record REQUEST">
+        <form action="insert.php" method="post" CLAss="biometric_record REQUEST">
             <input type="text" name="request" id="request" value="biometric record" readonly hidden>
             <label for="bio_date">
                 Enter Requested Date <br>
@@ -72,7 +74,7 @@
                 <br><button type="submit" name="submit">Submit</button>
             </div>  
         </form>
-        <form action="insert.php" method="post" class="reset_password REQUEST">
+        <form action="insert.php" method="post" CLAss="reset_password REQUEST">
             <input type="text" name="request" id="request" value="reset password" readonly hidden>
             <label>Choose account type</label>
             <div>
@@ -97,24 +99,24 @@
                 <br><button type="submit" name="submit">Submit</button>
             </div> 
         </form>
-        <form action="insert.php" method="post" class="telephone_repair REQUEST">
+        <form action="insert.php" method="post" CLAss="telephone_repair REQUEST">
             <input type="text" name="request" id="request" value="telephone repair" readonly hidden>
             <label>Choose a department</label><br>
 
-            <input type="radio" name="department_tel" id="cos tel" value="cos">
-            <label for="cos tel">COS</label>
-            <input type="radio" name="department_tel" id="cla tel" value="cla">
-            <label for="cla tel">CLA</label>
-            <input type="radio" name="department_tel" id="cie tel" value="cie">
-            <label for="cie tel">CIE</label>
-            <input type="radio" name="department_tel" id="cafa tel" value="cafa">
-            <label for="cafa tel">CAFA</label>
-            <input type="radio" name="department_tel" id="coe tel" value="coe">
-            <label for="coe tel">COE</label>
-            <input type="radio" name="department_tel" id="cit tel" value="cit">
-            <label for="cit tel">CIT</label>
-            <input type="radio" name="department_tel" id="irtc tel" value="irtc">
-            <label for="irtc tel">IRTC</label>
+            <input type="radio" name="department_tel" id="COS tel" value="COS">
+            <label for="COS tel">COS</label>
+            <input type="radio" name="department_tel" id="CLA tel" value="CLA">
+            <label for="CLA tel">CLA</label>
+            <input type="radio" name="department_tel" id="CIE tel" value="CIE">
+            <label for="CIE tel">CIE</label>
+            <input type="radio" name="department_tel" id="CAFA tel" value="CAFA">
+            <label for="CAFA tel">CAFA</label>
+            <input type="radio" name="department_tel" id="COE tel" value="COE">
+            <label for="COE tel">COE</label>
+            <input type="radio" name="department_tel" id="CIT tel" value="CIT">
+            <label for="CIT tel">CIT</label>
+            <input type="radio" name="department_tel" id="IRTC tel" value="IRTC">
+            <label for="IRTC tel">IRTC</label>
             <br>
             
             <label for="local_number">
@@ -125,24 +127,24 @@
                 <br><button type="submit" name="submit">Submit</button>
             </div> 
         </form>
-        <form action="insert.php" method="post" class="software_installation REQUEST">
+        <form action="insert.php" method="post" CLAss="software_installation REQUEST">
             <input type="text" name="request" id="request" value="software installation" readonly hidden>
             <label>Choose a department</label><br>
 
-            <input type="radio" name="software_installation" id="cos soft" value="cos">
-            <label for="cos soft">COS</label>
-            <input type="radio" name="software_installation" id="cla soft" value="cla">
-            <label for="cla soft">CLA</label>
-            <input type="radio" name="software_installation" id="cie soft" value="cie">
-            <label for="cie soft">CIE</label>
-            <input type="radio" name="software_installation" id="cafa soft" value="cafa">
-            <label for="cafa soft">CAFA</label>
-            <input type="radio" name="software_installation" id="coe soft" value="coe">
-            <label for="coe soft">COE</label>
-            <input type="radio" name="software_installation" id="cit soft" value="cit">
-            <label for="cit soft">CIT</label>
-            <input type="radio" name="software_installation" id="irtc soft" value="irtc">
-            <label for="irtc soft">IRTC</label>
+            <input type="radio" name="software_installation" id="COS soft" value="COS">
+            <label for="COS soft">COS</label>
+            <input type="radio" name="software_installation" id="CLA soft" value="CLA">
+            <label for="CLA soft">CLA</label>
+            <input type="radio" name="software_installation" id="CIE soft" value="CIE">
+            <label for="CIE soft">CIE</label>
+            <input type="radio" name="software_installation" id="CAFA soft" value="CAFA">
+            <label for="CAFA soft">CAFA</label>
+            <input type="radio" name="software_installation" id="COE soft" value="COE">
+            <label for="COE soft">COE</label>
+            <input type="radio" name="software_installation" id="CIT soft" value="CIT">
+            <label for="CIT soft">CIT</label>
+            <input type="radio" name="software_installation" id="IRTC soft" value="IRTC">
+            <label for="IRTC soft">IRTC</label>
             <br>
 
             <label for="software">
@@ -153,70 +155,70 @@
                 <br><button type="submit" name="submit">Submit</button>
             </div>
         </form>
-        <form action="insert.php" method="post" class="internet_connection REQUEST">
+        <form action="insert.php" method="post" CLAss="internet_connection REQUEST">
             <input type="text" name="request" id="request" value="internet connection" readonly hidden>
             <label>Choose a department</label><br>
 
-            <input type="radio" name="internet_connection" id="cos net" value="cos">
-            <label for="cos net">COS</label>
-            <input type="radio" name="internet_connection" id="cla net" value="cla">
-            <label for="cla net">CLA</label>
-            <input type="radio" name="internet_connection" id="cie net" value="cie">
-            <label for="cie net">CIE</label>
-            <input type="radio" name="internet_connection" id="cafa net" value="cafa">
-            <label for="cafa net">CAFA</label>
-            <input type="radio" name="internet_connection" id="coe net" value="coe">
-            <label for="coe net">COE</label>
-            <input type="radio" name="internet_connection" id="cit net" value="cit">
-            <label for="cit net">CIT</label>
-            <input type="radio" name="internet_connection" id="irtc net" value="irtc">
-            <label for="irtc net">IRTC</label>
+            <input type="radio" name="internet_connection" id="COS net" value="COS">
+            <label for="COS net">COS</label>
+            <input type="radio" name="internet_connection" id="CLA net" value="CLA">
+            <label for="CLA net">CLA</label>
+            <input type="radio" name="internet_connection" id="CIE net" value="CIE">
+            <label for="CIE net">CIE</label>
+            <input type="radio" name="internet_connection" id="CAFA net" value="CAFA">
+            <label for="CAFA net">CAFA</label>
+            <input type="radio" name="internet_connection" id="COE net" value="COE">
+            <label for="COE net">COE</label>
+            <input type="radio" name="internet_connection" id="CIT net" value="CIT">
+            <label for="CIT net">CIT</label>
+            <input type="radio" name="internet_connection" id="IRTC net" value="IRTC">
+            <label for="IRTC net">IRTC</label>
             <br>
             <div>
                 <br><button type="submit" name="submit">Submit</button>
             </div>
         </form>
-        <form action="insert.php" method="post" class="publication_update_of_info_in_website REQUEST">
+        <form action="insert.php" method="post" CLAss="publication_update_of_info_in_website REQUEST">
             <input type="text" name="request" id="request" value="publication update of info in website" readonly hidden>
             <label>Choose a department</label><br>
 
-            <input type="radio" name="publication_update_of_info_in_website" id="cos pub" value="cos">
-            <label for="cos pub">COS</label>
-            <input type="radio" name="publication_update_of_info_in_website" id="cla pub" value="cla">
-            <label for="cla pub">CLA</label>
-            <input type="radio" name="publication_update_of_info_in_website" id="cie pub" value="cie">
-            <label for="cie pub">CIE</label>
-            <input type="radio" name="publication_update_of_info_in_website" id="cafa pub" value="cafa">
-            <label for="cafa pub">CAFA</label>
-            <input type="radio" name="publication_update_of_info_in_website" id="coe pub" value="coe">
-            <label for="coe pub">COE</label>
-            <input type="radio" name="publication_update_of_info_in_website" id="cit pub" value="cit">
-            <label for="cit pub">CIT</label>
-            <input type="radio" name="publication_update_of_info_in_website" id="irtc pub" value="irtc">
-            <label for="irtc pub">IRTC</label>
+            <input type="radio" name="publication_update_of_info_in_website" id="COS pub" value="COS">
+            <label for="COS pub">COS</label>
+            <input type="radio" name="publication_update_of_info_in_website" id="CLA pub" value="CLA">
+            <label for="CLA pub">CLA</label>
+            <input type="radio" name="publication_update_of_info_in_website" id="CIE pub" value="CIE">
+            <label for="CIE pub">CIE</label>
+            <input type="radio" name="publication_update_of_info_in_website" id="CAFA pub" value="CAFA">
+            <label for="CAFA pub">CAFA</label>
+            <input type="radio" name="publication_update_of_info_in_website" id="COE pub" value="COE">
+            <label for="COE pub">COE</label>
+            <input type="radio" name="publication_update_of_info_in_website" id="CIT pub" value="CIT">
+            <label for="CIT pub">CIT</label>
+            <input type="radio" name="publication_update_of_info_in_website" id="IRTC pub" value="IRTC">
+            <label for="IRTC pub">IRTC</label>
             <br>
             <div>
                 <br><button type="submit" name="submit">Submit</button>
             </div>
         </form>
-        <form action="insert.php" method="post" class="ict_repair_equipment REQUEST">
+        <form action="insert.php" method="post" CLAss="ict_repair_equipment REQUEST">
             <input type="text" name="request" id="request" value="ict repair equipment" readonly hidden>
             <label>Choose a department</label><br>
 
-            <input type="radio" name="ict_repair_equipment" id="cos rep" value="cos">
-            <label for="cos rep">COS</label>
-            <input type="radio" name="ict_repair_equipment" id="cla rep" value="cla">
-            <label for="cla rep">CLA</label>
-            <input type="radio" name="ict_repair_equipment" id="cie rep" value="cie">
-            <label for="cie rep">CIE</label>
-            <input type="radio" name="ict_repair_equipment" id="cafa rep" value="cafa">
-            <label for="cafa rep">CAFA</label>
-            <input type="radio" name="ict_repair_equipment" id="coe rep" value="coe">
-            <label for="coe rep">COE</label>
-            <input type="radio" name="ict_repair_equipment" id="cit rep" value="cit">
-            <label for="cit rep">CIT</label>
-            <input type="radio" name="ict_repair_equipment" id="irtc rep" value="irtc">
-            <label for="irtc rep">IRTC</label>
+            <input type="radio" name="ict_repair_equipment" id="COS rep" value="COS">
+            <label for="COS rep">COS</label>
+            <input type="radio" name="ict_repair_equipment" id="CLA rep" value="CLA">
+            <label for="CLA rep">CLA</label>
+            <input type="radio" name="ict_repair_equipment" id="CIE rep" value="CIE">
+            <label for="CIE rep">CIE</label>
+            <input type="radio" name="ict_repair_equipment" id="CAFA rep" value="CAFA">
+            <label for="CAFA rep">CAFA</label>
+            <input type="radio" name="ict_repair_equipment" id="COE rep" value="COE">
+            <label for="COE rep">COE</label>
+            <input type="radio" name="ict_repair_equipment" id="CIT rep" value="CIT">
+            <label for="CIT rep">CIT</label>
+            <input type="radio" name="ict_repair_equipment" id="IRTC rep" value="IRTC">
+            <label for="IRTC rep">IRTC</label>
             <br>
 
             <label for="specified_problem">
@@ -227,24 +229,24 @@
                 <br><button type="submit" name="submit">Submit</button>
             </div>
         </form>
-        <form action="insert.php" method="post" class="others REQUEST">
+        <form action="insert.php" method="post" CLAss="others REQUEST">
             <input type="text" name="request" id="request" value="others" readonly hidden>
             <label>Choose a department</label><br>
 
-            <input type="radio" name="others" id="cos oth" value="cos">
-            <label for="cos oth">COS</label>
-            <input type="radio" name="others" id="cla oth" value="cla">
-            <label for="cla oth">CLA</label>
-            <input type="radio" name="others" id="cie oth" value="cie">
-            <label for="cie oth">CIE</label>
-            <input type="radio" name="others" id="cafa oth" value="cafa">
-            <label for="cafa oth">CAFA</label>
-            <input type="radio" name="others" id="coe oth" value="coe">
-            <label for="coe oth">COE</label>
-            <input type="radio" name="others" id="cit oth" value="cit">
-            <label for="cit oth">CIT</label>
-            <input type="radio" name="others" id="irtc oth" value="irtc">
-            <label for="irtc oth">IRTC</label>
+            <input type="radio" name="others" id="COS oth" value="COS">
+            <label for="COS oth">COS</label>
+            <input type="radio" name="others" id="CLA oth" value="CLA">
+            <label for="CLA oth">CLA</label>
+            <input type="radio" name="others" id="CIE oth" value="CIE">
+            <label for="CIE oth">CIE</label>
+            <input type="radio" name="others" id="CAFA oth" value="CAFA">
+            <label for="CAFA oth">CAFA</label>
+            <input type="radio" name="others" id="COE oth" value="COE">
+            <label for="COE oth">COE</label>
+            <input type="radio" name="others" id="CIT oth" value="CIT">
+            <label for="CIT oth">CIT</label>
+            <input type="radio" name="others" id="IRTC oth" value="IRTC">
+            <label for="IRTC oth">IRTC</label>
             <br>
 
             <label for="specified_request">
