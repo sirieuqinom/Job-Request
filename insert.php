@@ -58,16 +58,16 @@
         if($query){
             echo "
 			    <script>
-				    alert('YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEET');
-				    window.location = 'index.html';
+				    alert('Request Submitted');
+				    window.location = 'index.php';
 			    </script>
 			    ";
         }
         else{
             echo "
             <script>
-                alert('SHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEET');
-                window.location = 'index.html';
+                alert('Error with submition');
+                window.location = 'request.php';
             </script>
             ";
        }
