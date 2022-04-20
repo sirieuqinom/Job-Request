@@ -16,7 +16,7 @@
         else{
     
     $email = $con->real_escape_string($_POST['email']);
-    $password = $con->real_escape_string($_POST['password']);
+    $password = $con->real_escape_string(sha1($_POST['password']));
     $name     = $con->real_escape_string($_POST['name']);
     $role     = $con->real_escape_string($_REQUEST['role']);
 

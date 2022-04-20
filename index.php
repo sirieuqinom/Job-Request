@@ -10,47 +10,48 @@
   
   if (isset($_POST['submit'])) {
 
-      $errorMsg = "";
+    $errorMsg = "";
 
-      $email = $con->real_escape_string($_POST['email']);
-      $password = $con->real_escape_string(md5($_POST['password']));
-      
-  if (!empty($email) || !empty($password)) {
-        $query  = "SELECT * FROM admins WHERE email = '$email' AND password = '$password'";
-        $result = $con->query($query);
-        if($result->num_rows > 0){
-            $row = $result->fetch_assoc();
+    $email = $con->real_escape_string($_POST['email']);
+    $password = $con->real_escape_string(sha1($_POST['password']));
+    
+if (!empty($email) || !empty($password)) {
+      $query  = "SELECT * FROM admins WHERE email = '$email'AND password = '$password' ";
+      $result = $con->query($query);
+      if($result->num_rows > 0){
+          $row = $result->fetch_assoc();
 
-            $_SESSION["ID"] = $row['id'];
-            $_SESSION["ROLE"] = $row['role'];
-            $_SESSION["NAME"] = $row['name'];
-            $_SESSION["EMAIL"] = $row['email'];
+          $_SESSION["ID"] = $row['id'];
+          $_SESSION["ROLE"] = $row['role'];
+          $_SESSION["NAME"] = $row['name'];
+          $_SESSION["EMAIL"] = $row['email'];
+          
+          if($password != $row['password']){
+              $errorMsg = "Password is Incorrect";
             
-            if($password !== $row['password']){
-                $errorMsg = "Password is Incorrect";
-            }
-
-            elseif($row['role'] == "admin"){
-              header("Location:dashboard.php");
-            die();  
-            }
-            elseif($row['role'] == "staff"){
-            header("Location:dashboard.php");
-            die(); 
           }
-            elseif ($row['role'] == "student") {
-              header("Location:dashboard.php");
-            die(); 
-            }
-        
-            
-        }else{
-         $errorMsg = "This user does not exist!";
-        } 
-    }else{
-     $errorMsg = "Email Address and Password is required";
-    }
+
+          elseif($row['role'] == "admin"){
+            header("Location:dashboard.php");
+          die();  
+          }
+          elseif($row['role'] == "staff"){
+          header("Location:dashboard.php");
+          die(); 
+        }
+          elseif ($row['role'] == "user") {
+            header("Location:dashboard.php");
+          die(); 
+          }
+      
+          
+      }else{
+       $errorMsg = "This user does not exist!";
+      } 
+  }else{
+   $errorMsg = "Email Address and Password is required";
   }
+}
 
 ?>
 <!DOCTYPE html>
@@ -86,7 +87,7 @@
             <label for="password">Password:</label> 
             <input type="password" id="myInput" class="form-control" name="password" placeholder="Enter Password" required>
           </div>
-          <input type="checkbox" onclick="myFunction()">Show Password
+          <input type="checkbox" onclick="myFunction()"> Show Password
           <div class="form-group">
             <p>Not registered? <a href="register.php">Create Account</a></p>
             <input type="submit" name="submit" class="btn btn-success" value="Login"> 
