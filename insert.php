@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     include "config.php";
 
     if(isset($_POST['submit'])){
@@ -46,20 +46,20 @@
             $dept = $_POST['others'];
             $problem = $_POST['specified_request'];
         }
-       
+        $sess = $_SESSION["EMAIL"];
         $sql = "INSERT into requests 
                 (request,dates,account_type,provided_email,provided_id,
-                dept,local_number,software,problem) 
+                dept,local_number,software,problem,email) 
                 VALUES 
                 ('$request','$date','$account_type','$provided_email','$provided_id',
-                '$dept','$local_number','$software','$problem')";
-        $query = mysqli_query($conn,$sql);
+                '$dept','$local_number','$software','$problem','$sess')";
+        $query = mysqli_query($con,$sql);
 
         if($query){
             echo "
 			    <script>
 				    alert('Request Submitted');
-				    window.location = 'index.php';
+				    window.location = 'dashboard.php';
 			    </script>
 			    ";
         }

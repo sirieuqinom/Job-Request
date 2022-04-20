@@ -1,3 +1,9 @@
+<?php
+
+    session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +39,10 @@
         </button>
         <div CLAss="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div CLAss="navbar-nav">
-                <a CLAss="nav-item nav-link" href="index.php">Dashboard</a>
+                <a CLAss="nav-item nav-link" href="dashboard.php">Dashboard</a>
                 <a CLAss="nav-item nav-link active" href="#">Submit request</a>
                 <a CLAss="nav-item nav-link" href="logout.php">Logout</a>
+                <a class="nav-item nav-link" style="pointer-events:none"> <?php echo $_SESSION["EMAIL"]; ?></a>
             </div>
         </div>
     </nav>
