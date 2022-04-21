@@ -1,21 +1,19 @@
 <?php
 
-  // Include database connection file
+// Include database connection file
 
-  include_once('config.php');
+include_once('config.php');
 
-  if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
 
-    $check = $_POST['email'];
-    $sql = "SELECT email from users where email = '$check'";
+  $check = $_POST['email'];
+  $sql = "SELECT email from users where email = '$check'";
 
-    $result = $con->query($sql);
-        if($result->num_rows > 0){
-            $errorMsg  = "User Already Exists";
-        }
+  $result = $con->query($sql);
+  if ($result->num_rows > 0) {
+    $errorMsg  = "User Already Exists";
+  } else {
 
-        else{
-    
     $email    = $con->real_escape_string($_POST['email']);
     $password = $con->real_escape_string(sha1($_POST['password']));
     $name     = $con->real_escape_string($_POST['name']);
@@ -31,15 +29,15 @@
           window.location = 'index.php';
         </script>
       ";
-    }else{
+    } else {
       $errorMsg  = "You are not Registred..Please Try again";
-    }   
-
+    }
   }
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>UITC SUPPORT</title>
   <meta charset="utf-8">
@@ -47,16 +45,17 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
+
 <body>
 
-<div class="card text-center" style="padding:20px;">
-  <h3>UITC SUPPORT</h3>
-</div><br>
+  <div class="card text-center" style="padding:20px;">
+    <h3>UITC SUPPORT</h3>
+  </div><br>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-3"></div>
-      <div class="col-md-6">      
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
         <?php if (isset($errorMsg)) { ?>
           <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -68,15 +67,15 @@
             <label for="name">Name:</label>
             <input type="text" class="form-control" name="name" placeholder="Enter Name" required="">
           </div>
-          <div class="form-group">  
+          <div class="form-group">
             <label for="email">Email:</label>
             <input type="text" class="form-control" name="email" placeholder="Enter Email" required="">
           </div>
-          <div class="form-group">  
+          <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" class="form-control" name="password" placeholder="Enter Password" required="">
           </div>
-          <div class="form-group">  
+          <div class="form-group">
             <select class="form-control" name="role" required="">
               <option value="" disabled selected hidden>Select User Type</option>
               <option value="user">User</option>
@@ -89,7 +88,8 @@
           </div>
         </form>
       </div>
+    </div>
   </div>
-</div>
 </body>
+
 </html>

@@ -29,9 +29,43 @@ if (empty($_SESSION["EMAIL"])) {
 
 <body>
     <?php
-    $sess = $_SESSION["EMAIL"];
-    $sql = "SELECT * from requests where email ='$sess'";
-    $sqlQuery = mysqli_query($con, $sql);
+
+    $sessid = $_SESSION["ID"];
+
+    $tasksql = "SELECT * FROM assigned_task where user_id = '$sessid' ";
+    $taskquery = mysqli_query($con, $tasksql);
+
+    if ($taskquery) {
+        while ($row = mysqli_fetch_assoc($taskquery)) {
+            $reqrid = $row['request_id'];
+            /*
+                    $sql = "SELECT * from request_type where request_id ='$reqrid'";
+                   $sqlQuery = mysqli_query($con,$sql);
+                    if($sqlQuery){
+                        while($rows=mysqli_fetch_assoc($sqlQuery)){
+                            $reqname = $rows['request'];
+                        }
+                    } */
+
+            $sqlreq = "SELECT * from requests where request ='$reqrid'";
+            $reqQuery = mysqli_query($con, $sqlreq);
+            if ($reqQuery) {
+                while ($rows = mysqli_fetch_assoc($reqQuery)) {
+                    $reqid = $rows['request'];
+                }
+            }
+            echo "$reqid";
+        }
+    }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -69,42 +103,44 @@ if (empty($_SESSION["EMAIL"])) {
         </thead>
 
         <tbody>
-            <?php
-            $num = 1;
-            if ($sqlQuery) {
-                while ($row = mysqli_fetch_assoc($sqlQuery)) {
-                    $id = $num;
-                    $request = $row['request'];
-                    $dates = $row['dates'];
-                    $type = $row['account_type'];
-                    $email = $row['provided_email'];
-                    $pid = $row['provided_id'];
-                    $number = $row['local_number'];
-                    $software = $row['software'];
-                    $dept = $row['dept'];
-                    $problem = $row['problem'];
-                    $status = $row['status'];
 
-                    echo '
+            <?php
+            /*
+                $num = 1;
+                if($sqlQuery){
+                    while($row=mysqli_fetch_assoc($sqlQuery)){
+                        $id = $num;
+                        $request = $row['request'];
+                        $dates = $row['dates'];
+                        $type = $row['account_type'];
+                        $email = $row['provided_email'];
+                        $pid = $row['provided_id'];
+                        $number = $row['local_number'];
+                        $software = $row['software'];
+                        $dept = $row['dept'];
+                        $problem = $row['problem'];
+                        $status = $row['status'];
+
+                        echo '
                         <tr>
-                          <th scope="row">' . $id . '</th>
-                          <td>' . $request . '</td>
-                          <td>' . $dates . '</td>
-                          <td>' . $type . '</td>
-                          <td>' . $email . '</td>
-                          <td>' . $pid . '</td>
-                          <td>' . $number . '</td>
-                          <td>' . $software . '</td>
-                          <td>' . $dept . '</td>
-                          <td>' . $problem . '</td>
-                          <td>' . $status . '</td>
+                          <th scope="row">'.$id.'</th>
+                          <td>'.$request.'</td>
+                          <td>'.$dates.'</td>
+                          <td>'.$type.'</td>
+                          <td>'.$email.'</td>
+                          <td>'.$pid.'</td>
+                          <td>'.$number.'</td>
+                          <td>'.$software.'</td>
+                          <td>'.$dept.'</td>
+                          <td>'.$problem.'</td>
+                          <td>'.$status.'</td>
                         </tr>
                         ';
-                    $num++;
+                        $num++;
+                    }
                 }
-            }
-
-            ?>
+            
+           */ ?>
         </tbody>
     </table>
 </body>
