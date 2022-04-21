@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2022 at 07:07 AM
+-- Generation Time: Apr 21, 2022 at 08:57 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -33,6 +33,15 @@ CREATE TABLE `assigned_task` (
   `request_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `assigned_task`
+--
+
+INSERT INTO `assigned_task` (`id`, `user_id`, `request_id`) VALUES
+(1, 1, 3),
+(2, 1, 1),
+(3, 4, 9);
+
 -- --------------------------------------------------------
 
 --
@@ -59,8 +68,9 @@ CREATE TABLE `requests` (
 --
 
 INSERT INTO `requests` (`id`, `request`, `dates`, `account_type`, `provided_email`, `provided_id`, `local_number`, `software`, `dept`, `problem`, `status`, `email`) VALUES
-(49, 'daily time record', 'May 1 - 15, 2021', '', '', '', '', '', '', '', 'pending', 'sample@something.com'),
-(50, 'others', '', '', '', '', '', '', 'CLA', 'Need Cash', 'pending', 'sample2@something.com');
+(49, '1', 'May 1 - 15, 2021', '', '', '', '', '', '', '', 'pending', 'sample@something.com'),
+(50, '9', '', '', '', '', '', '', 'CLA', 'Need Cash', 'pending', 'sample2@something.com'),
+(51, '3', '', 'TUP Portal', 'giann825@gmail.com', 'tupm-18-0229', '', '', '', '', 'pending', 'sample@something.com');
 
 -- --------------------------------------------------------
 
@@ -107,9 +117,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
-(21, 'Juan Gabrielle A. Gomez', 'juangabrielle.gomez@tup.edu.ph', '8fb5cfe922674e0f9faa46a92716f66bd67ad344', 'staff'),
-(23, 'Yaeee', 'sample@something.com', '8cb2237d0679ca88db6464eac60da96345513964', 'user'),
-(24, 'new sample', 'sample2@something.com', '8cb2237d0679ca88db6464eac60da96345513964', 'user');
+(1, 'Juan Gabrielle A. Gomez', 'juangabrielle.gomez@tup.edu.ph', '8fb5cfe922674e0f9faa46a92716f66bd67ad344', 'UITC staff'),
+(2, 'Yaeee', 'sample@something.com', '8cb2237d0679ca88db6464eac60da96345513964', 'user'),
+(3, 'new sample', 'sample2@something.com', '8cb2237d0679ca88db6464eac60da96345513964', 'user'),
+(4, 'new admin', 'admin@sample.com', '8cb2237d0679ca88db6464eac60da96345513964', 'UITC staff');
 
 --
 -- Indexes for dumped tables
@@ -147,13 +158,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `assigned_task`
 --
 ALTER TABLE `assigned_task`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `request_type`
@@ -165,7 +176,7 @@ ALTER TABLE `request_type`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
