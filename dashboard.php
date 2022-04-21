@@ -2,6 +2,15 @@
 
     include 'config.php';
     session_start();
+
+    if(empty($_SESSION["EMAIL"])){
+        echo "
+			    <script>
+				    alert('SESSION ENDED. REDIRECTING TO LOGIN PAGE');
+				    window.location = 'index.php';
+			    </script>
+			    ";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +31,7 @@
         $sql = "SELECT * from requests where email ='$sess'";
         $sqlQuery = mysqli_query($con,$sql);
 		
+    
 
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">

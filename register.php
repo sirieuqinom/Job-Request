@@ -6,7 +6,8 @@
 
   if (isset($_POST['submit'])) {
 
-    $sql = "SELECT email from admins";
+    $check = $_POST['email'];
+    $sql = "SELECT email from users where email = '$check'";
 
     $result = $con->query($sql);
         if($result->num_rows > 0){
@@ -15,19 +16,19 @@
 
         else{
     
-    $email = $con->real_escape_string($_POST['email']);
+    $email    = $con->real_escape_string($_POST['email']);
     $password = $con->real_escape_string(sha1($_POST['password']));
     $name     = $con->real_escape_string($_POST['name']);
     $role     = $con->real_escape_string($_REQUEST['role']);
 
-    $query  = "INSERT INTO admins (name,email,password,role) VALUES ('$name','$email','$password','$role')";
+    $query  = "INSERT INTO users (name,email,password,role) VALUES ('$name','$email','$password','$role')";
     $result = $con->query($query);
 
     if ($result) {
       echo "
         <script>
           alert('register success');
-          window.location = index.php;
+          window.location = 'index.php';
         </script>
       ";
     }else{
@@ -79,8 +80,7 @@
             <select class="form-control" name="role" required="">
               <option value="" disabled selected hidden>Select User Type</option>
               <option value="user">User</option>
-              <option value="staff">Staff</option>
-              <option value="admin">Admin</option>
+              <option value="UITC staff">Staff</option>
             </select>
           </div>
           <div class="form-group">

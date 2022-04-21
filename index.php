@@ -1,8 +1,10 @@
 <?php
   session_start();
   if (isset($_SESSION['ID'])) {
+    if($_SESSION["ROLE"]== "user"){
       header("Location:dashboard.php");
       exit();
+    }
   }
   // Include database connectivity
     
@@ -16,7 +18,7 @@
     $password = $con->real_escape_string(sha1($_POST['password']));
     
 if (!empty($email) || !empty($password)) {
-      $query  = "SELECT * FROM admins WHERE email = '$email'AND password = '$password' ";
+      $query  = "SELECT * FROM users WHERE email = '$email'AND password = '$password' ";
       $result = $con->query($query);
       if($result->num_rows > 0){
           $row = $result->fetch_assoc();
@@ -25,18 +27,14 @@ if (!empty($email) || !empty($password)) {
           $_SESSION["ROLE"] = $row['role'];
           $_SESSION["NAME"] = $row['name'];
           $_SESSION["EMAIL"] = $row['email'];
-          
-          if($password != $row['password']){
-              $errorMsg = "Password is Incorrect";
-            
-          }
-
-          elseif($row['role'] == "admin"){
-            header("Location:dashboard.php");
-          die();  
-          }
-          elseif($row['role'] == "staff"){
-          header("Location:dashboard.php");
+        
+          if($row['role'] == "staff"){
+            echo "
+            <script>
+                alert('wrong role ');
+                window.location = 'index.php';
+            </script>
+            ";
           die(); 
         }
           elseif ($row['role'] == "user") {
@@ -46,10 +44,8 @@ if (!empty($email) || !empty($password)) {
       
           
       }else{
-       $errorMsg = "This user does not exist!";
+       $errorMsg = "Email or Password is Incorrect";
       } 
-  }else{
-   $errorMsg = "Email Address and Password is required";
   }
 }
 
@@ -87,7 +83,10 @@ if (!empty($email) || !empty($password)) {
             <label for="password">Password:</label> 
             <input type="password" id="myInput" class="form-control" name="password" placeholder="Enter Password" required>
           </div>
-          <input type="checkbox" onclick="myFunction()"> Show Password
+          <label for="showpass">
+          <input type="checkbox" name="showpass" id="showpass" onclick="myFunction()">
+            Show Password
+          </label>
           <div class="form-group">
             <p>Not registered? <a href="register.php">Create Account</a></p>
             <input type="submit" name="submit" class="btn btn-success" value="Login"> 
