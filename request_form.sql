@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2022 at 02:16 AM
+-- Generation Time: Apr 21, 2022 at 07:07 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -24,25 +24,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admins`
+-- Table structure for table `assigned_task`
 --
 
-CREATE TABLE `admins` (
+CREATE TABLE `assigned_task` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `role` varchar(100) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `request_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `admins`
---
-
-INSERT INTO `admins` (`id`, `name`, `email`, `password`, `role`) VALUES
-(1, 'Monique Irish B. Llorca', 'moniqueirish.llorca@tup.edu.ph', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'admin'),
-(2, 'Ma. Angelica A. Lopez', 'maangelica.lopez@tup.edu.ph', '10470c3b4b1fed12c3baac014be15fac67c6e815', 'user'),
-(19, 'Juan Gabrielle Gomez', 'juangabrielle.gomez@tup.edu.ph', '8cb2237d0679ca88db6464eac60da96345513964', 'user');
 
 -- --------------------------------------------------------
 
@@ -70,28 +59,66 @@ CREATE TABLE `requests` (
 --
 
 INSERT INTO `requests` (`id`, `request`, `dates`, `account_type`, `provided_email`, `provided_id`, `local_number`, `software`, `dept`, `problem`, `status`, `email`) VALUES
-(36, 'telephone repair', '', '', '', '', '789', '', 'CAFA', '', 'pending', ''),
-(37, 'daily time record', 'May 1 - 15, 2021', '', '', '', '', '', '', '', 'pending', ''),
-(38, 'ict repair equipment', '', '', '', '', '', '', 'CLA', 'Broken Computer', 'pending', ''),
-(39, 'others', '', '', '', '', '', '', 'IRTC', 'Need Cash', 'pending', ''),
-(40, 'reset password', '', 'TUP Web ERS', 'giann825@gmail.com', 'tupm-18-0229', '', '', '', '', 'pending', ''),
-(41, 'software installation', '', '', '', '', '', 'microsoft office', 'CIE', '', 'pending', ''),
-(42, 'others', '', '', '', '', '', '', 'COS', 'Requesting new pc', 'pending', ''),
-(43, 'others', '', '', '', '', '', '', 'CLA', 'pending request for new PC', 'pending', ''),
-(44, 'ict repair equipment', '', '', '', '', '', '', 'CLA', 'adsfadf', 'pending', ''),
-(45, 'daily time record', 'May 1 - 15, 2021', '', '', '', '', '', '', '', 'pending', ''),
-(46, 'telephone repair', '', '', '', '', '111', '', 'COS', '', 'pending', 'moniqueirish.llorca@tup.edu.ph'),
-(47, 'reset password', '', 'TUP Portal', 'giann825@gmail.com', 'lkjlkjlkjlkjlkj', '', '', '', '', 'pending', 'juangabrielle.gomez@tup.edu.ph'),
-(48, 'biometric record', 'May 15 - 30, 2022', '', '', '', '', '', '', '', 'pending', 'moniqueirish.llorca@tup.edu.ph');
+(49, 'daily time record', 'May 1 - 15, 2021', '', '', '', '', '', '', '', 'pending', 'sample@something.com'),
+(50, 'others', '', '', '', '', '', '', 'CLA', 'Need Cash', 'pending', 'sample2@something.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `request_type`
+--
+
+CREATE TABLE `request_type` (
+  `request_id` int(11) NOT NULL,
+  `request` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `request_type`
+--
+
+INSERT INTO `request_type` (`request_id`, `request`) VALUES
+(1, 'Daily Time Record'),
+(2, 'Biometric Record'),
+(3, 'Reset Password'),
+(4, 'Telephone Repair'),
+(5, 'Software Installation'),
+(6, 'Internet Connection'),
+(7, 'Publication/Update of Info in Website'),
+(8, 'ICT Repair Equipment'),
+(9, 'Others');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `role` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
+(21, 'Juan Gabrielle A. Gomez', 'juangabrielle.gomez@tup.edu.ph', '8fb5cfe922674e0f9faa46a92716f66bd67ad344', 'staff'),
+(23, 'Yaeee', 'sample@something.com', '8cb2237d0679ca88db6464eac60da96345513964', 'user'),
+(24, 'new sample', 'sample2@something.com', '8cb2237d0679ca88db6464eac60da96345513964', 'user');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `admins`
+-- Indexes for table `assigned_task`
 --
-ALTER TABLE `admins`
+ALTER TABLE `assigned_task`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -101,20 +128,44 @@ ALTER TABLE `requests`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `request_type`
+--
+ALTER TABLE `request_type`
+  ADD PRIMARY KEY (`request_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `admins`
+-- AUTO_INCREMENT for table `assigned_task`
 --
-ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+ALTER TABLE `assigned_task`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT for table `request_type`
+--
+ALTER TABLE `request_type`
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
