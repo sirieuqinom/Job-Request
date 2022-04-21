@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2022 at 09:56 AM
+-- Generation Time: Apr 21, 2022 at 02:16 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -40,9 +40,9 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `role`) VALUES
-(1, 'Monique Irish B. Llorca', 'moniqueirish.llorca@tup.edu.ph', '123456', 'admin'),
-(2, 'Ma. Angelica A. Lopez', 'maangelica.lopez@tup.edu.ph', 'e10adc3949ba59abbe56e057f20f883e', 'student'),
-(19, 'Juan Gabrielle Gomez', 'juangabrielle.gomez@tup.edu.ph', '12345', 'user');
+(1, 'Monique Irish B. Llorca', 'moniqueirish.llorca@tup.edu.ph', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'admin'),
+(2, 'Ma. Angelica A. Lopez', 'maangelica.lopez@tup.edu.ph', '10470c3b4b1fed12c3baac014be15fac67c6e815', 'user'),
+(19, 'Juan Gabrielle Gomez', 'juangabrielle.gomez@tup.edu.ph', '8cb2237d0679ca88db6464eac60da96345513964', 'user');
 
 -- --------------------------------------------------------
 
