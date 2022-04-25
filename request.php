@@ -60,20 +60,20 @@ if (empty($_SESSION["EMAIL"])) {
     <div>
         <select name="request" id="request">
             <option value="0" selected hidden>Select an option</option>
-            <option value="daily_time_record">Daily Time Record</option>
-            <option value="biometric_record">Biometric Record</option>
-            <option value="reset_password">Reset Password</option>
-            <option value="telephone_repair">Telephone Repair</option>
-            <option value="software_installation">Software Installation</option>
-            <option value="internet_connection">Internet Connection</option>
-            <option value="publication_update_of_info_in_website">Publication/Update of info in Website</option>
-            <option value="ict_repair_equipment">ICT repair equipment</option>
-            <option value="others">Others</option>
+            <option value="1">Daily Time Record</option>
+            <option value="2">Biometric Record</option>
+            <option value="3">Reset Password</option>
+            <option value="4">Telephone Repair</option>
+            <option value="5">Software Installation</option>
+            <option value="6">Internet Connection</option>
+            <option value="7">Publication/Update of info in Website</option>
+            <option value="8">ICT repair equipment</option>
+            <option value="9">Others</option>
         </select>
     </div>
     <div>
-        <form action="insert.php" method="post" CLAss="daily_time_record REQUEST">
-            <input type="text" name="request" id="request" value="daily time record" readonly hidden>
+        <form action="insert.php" method="post" CLAss="1 REQUEST">
+            <input type="text" name="request" id="request" value="1" readonly hidden>
             <label for="dtr_date">
                 Enter Requested Date <br>
                 <input type="text" name="dtr_date" id="dtr_date" required>
@@ -82,8 +82,8 @@ if (empty($_SESSION["EMAIL"])) {
                 <br><button type="submit" name="submit">Submit</button>
             </div>
         </form>
-        <form action="insert.php" method="post" CLAss="biometric_record REQUEST">
-            <input type="text" name="request" id="request" value="biometric record" readonly hidden>
+        <form action="insert.php" method="post" CLAss="2 REQUEST">
+            <input type="text" name="request" id="request" value="2" readonly hidden>
             <label for="bio_date">
                 Enter Requested Date <br>
                 <input type="text" name="bio_date" id="bio_date" required>
@@ -92,8 +92,8 @@ if (empty($_SESSION["EMAIL"])) {
                 <br><button type="submit" name="submit">Submit</button>
             </div>
         </form>
-        <form action="insert.php" method="post" CLAss="reset_password REQUEST">
-            <input type="text" name="request" id="request" value="reset password" readonly hidden>
+        <form action="insert.php" method="post" CLAss="3 REQUEST">
+            <input type="text" name="request" id="request" value="3" readonly hidden>
             <label>Choose account type</label>
             <div>
                 <input type="radio" name="account_type" id="tup_portal" value="TUP Portal">
@@ -117,8 +117,8 @@ if (empty($_SESSION["EMAIL"])) {
                 <br><button type="submit" name="submit">Submit</button>
             </div>
         </form>
-        <form action="insert.php" method="post" CLAss="telephone_repair REQUEST">
-            <input type="text" name="request" id="request" value="telephone repair" readonly hidden>
+        <form action="insert.php" method="post" CLAss="4 REQUEST">
+            <input type="text" name="request" id="request" value="4" readonly hidden>
             <label>Choose a department</label><br>
 
             <input type="radio" name="department_tel" id="COS tel" value="COS">
@@ -145,8 +145,8 @@ if (empty($_SESSION["EMAIL"])) {
                 <br><button type="submit" name="submit">Submit</button>
             </div>
         </form>
-        <form action="insert.php" method="post" CLAss="software_installation REQUEST">
-            <input type="text" name="request" id="request" value="software installation" readonly hidden>
+        <form action="insert.php" method="post" CLAss="5 REQUEST">
+            <input type="text" name="request" id="request" value="5" readonly hidden>
             <label>Choose a department</label><br>
 
             <input type="radio" name="software_installation" id="COS soft" value="COS">
@@ -173,8 +173,8 @@ if (empty($_SESSION["EMAIL"])) {
                 <br><button type="submit" name="submit">Submit</button>
             </div>
         </form>
-        <form action="insert.php" method="post" CLAss="internet_connection REQUEST">
-            <input type="text" name="request" id="request" value="internet connection" readonly hidden>
+        <form action="insert.php" method="post" CLAss="6 REQUEST">
+            <input type="text" name="request" id="request" value="6" readonly hidden>
             <label>Choose a department</label><br>
 
             <input type="radio" name="internet_connection" id="COS net" value="COS">
@@ -196,8 +196,8 @@ if (empty($_SESSION["EMAIL"])) {
                 <br><button type="submit" name="submit">Submit</button>
             </div>
         </form>
-        <form action="insert.php" method="post" CLAss="publication_update_of_info_in_website REQUEST">
-            <input type="text" name="request" id="request" value="publication update of info in website" readonly hidden>
+        <form action="insert.php" method="post" CLAss="7 REQUEST">
+            <input type="text" name="request" id="request" value="7" readonly hidden>
             <label>Choose a department</label><br>
 
             <input type="radio" name="publication_update_of_info_in_website" id="COS pub" value="COS">
@@ -219,8 +219,8 @@ if (empty($_SESSION["EMAIL"])) {
                 <br><button type="submit" name="submit">Submit</button>
             </div>
         </form>
-        <form action="insert.php" method="post" CLAss="ict_repair_equipment REQUEST">
-            <input type="text" name="request" id="request" value="ict repair equipment" readonly hidden>
+        <form action="insert.php" method="post" CLAss="8 REQUEST">
+            <input type="text" name="request" id="request" value="8" readonly hidden>
             <label>Choose a department</label><br>
 
             <input type="radio" name="ict_repair_equipment" id="COS rep" value="COS">
@@ -247,8 +247,8 @@ if (empty($_SESSION["EMAIL"])) {
                 <br><button type="submit" name="submit">Submit</button>
             </div>
         </form>
-        <form action="insert.php" method="post" CLAss="others REQUEST">
-            <input type="text" name="request" id="request" value="others" readonly hidden>
+        <form action="insert.php" method="post" CLAss="9 REQUEST">
+            <input type="text" name="request" id="request" value="9" readonly hidden>
             <label>Choose a department</label><br>
 
             <input type="radio" name="others" id="COS oth" value="COS">

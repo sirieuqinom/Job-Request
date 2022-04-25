@@ -25,6 +25,18 @@ if (empty($_SESSION["EMAIL"])) {
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        tr[data-href] {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $(document.body).on("click", "tr[data-href]", function() {
+                window.location.href = this.dataset.href;
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -36,7 +48,6 @@ if (empty($_SESSION["EMAIL"])) {
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="#">Dashboard</a>
-                <a class="nav-item nav-link" href="request.php">Submit request</a>
                 <a class="nav-item nav-link" href="logout.php">Logout</a>
                 <a class="nav-item nav-link" style="pointer-events:none"> <?php echo $_SESSION["EMAIL"]; ?></a>
 
@@ -56,6 +67,7 @@ if (empty($_SESSION["EMAIL"])) {
                 <th scope="col">SOFTWARE</th>
                 <th scope="col">DEPARTMENT</th>
                 <th scope="col">PROBLEM</th>
+                <th scope="col">USER</th>
                 <th scope="col">STATUS</th>
             </tr>
         </thead>
@@ -82,7 +94,6 @@ if (empty($_SESSION["EMAIL"])) {
                             $i++;
                             $reqid = $row['request'];
 
-
                             $sql = "SELECT * from request_type where request_id ='$reqid'";
                             $sqlQuery = mysqli_query($con, $sql);
                             if ($sqlQuery) {
@@ -98,10 +109,11 @@ if (empty($_SESSION["EMAIL"])) {
                             $software = $row['software'];
                             $dept = $row['dept'];
                             $problem = $row['problem'];
+                            $reqemail = $row['email'];
                             $status = $row['status'];
 
                             echo '
-                        <tr>
+                        <tr data-href = "data.html">
                             <th scope="row">' . $i . '</th>
                             <td>' . $reqname . '</td>
                             <td>' . $dates . '</td>
@@ -112,7 +124,9 @@ if (empty($_SESSION["EMAIL"])) {
                             <td>' . $software . '</td>
                             <td>' . $dept . '</td>
                             <td>' . $problem . '</td>
+                            <td>' . $reqemail . '</td>
                             <td>' . $status . '</td>
+
                         </tr>
                         ';
                         }

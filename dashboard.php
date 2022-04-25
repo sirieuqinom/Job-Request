@@ -25,17 +25,22 @@ if (empty($_SESSION["EMAIL"])) {
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        tr[data-href] {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $(document.body).on("click", "tr[data-href]", function() {
+                window.location.href = this.dataset.href;
+            });
+        });
+    </script>
 </head>
 
 <body>
-    <?php
-    $sess = $_SESSION["EMAIL"];
-    $sql = "SELECT * from requests where email ='$sess'";
-    $sqlQuery = mysqli_query($con, $sql);
-
-
-
-    ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.php">Job Request</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,11 +75,24 @@ if (empty($_SESSION["EMAIL"])) {
 
         <tbody>
             <?php
-            $num = 1;
+            $sess = $_SESSION["EMAIL"];
+
+            $sql = "SELECT * from requests where email ='$sess'";
+            $sqlQuery = mysqli_query($con, $sql);
+
             if ($sqlQuery) {
+                $num = 0;
                 while ($row = mysqli_fetch_assoc($sqlQuery)) {
-                    $id = $num;
-                    $request = $row['request'];
+                    $num++;
+                    $reqid = $row['request'];
+
+                    $sqlreq = "SELECT * from request_type where request_id ='$reqid'";
+                    $sqlreqQuery = mysqli_query($con, $sqlreq);
+                    if ($sqlreqQuery) {
+                        while ($rows = mysqli_fetch_assoc($sqlreqQuery)) {
+                            $request = $rows['request'];
+                        }
+                    }
                     $dates = $row['dates'];
                     $type = $row['account_type'];
                     $email = $row['provided_email'];
@@ -86,8 +104,8 @@ if (empty($_SESSION["EMAIL"])) {
                     $status = $row['status'];
 
                     echo '
-                        <tr>
-                          <th scope="row">' . $id . '</th>
+                        <tr data-href = "hello.html">
+                          <th scope="row">' . $num . '</th>
                           <td>' . $request . '</td>
                           <td>' . $dates . '</td>
                           <td>' . $type . '</td>
@@ -100,13 +118,13 @@ if (empty($_SESSION["EMAIL"])) {
                           <td>' . $status . '</td>
                         </tr>
                         ';
-                    $num++;
                 }
             }
 
             ?>
         </tbody>
     </table>
+
 </body>
 
 </html>
