@@ -1,8 +1,8 @@
 <?php
 session_start();
 if (isset($_SESSION['ID'])) {
-  if ($_SESSION["ROLE"] == "staff") {
-    header("Location:staffdashboard.php");
+  if ($_SESSION["ROLE"] == "user") {
+    header("Location:dashboard.php");
     exit();
   }
 }
@@ -29,15 +29,15 @@ if (isset($_POST['submit'])) {
       $_SESSION["EMAIL"] = $row['email'];
 
       if ($row['role'] == "UITC staff") {
-        header("Location:staffdashboard.php");
-        die();
-      } elseif ($row['role'] == "user") {
         echo "
             <script>
                 alert('wrong role ');
                 window.location = 'index.php';
             </script>
             ";
+        die();
+      } elseif ($row['role'] == "user") {
+        header("Location:dashboard.php");
         die();
       }
     } else {
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
 <html lang="en">
 
 <head>
-  <title>UITC STAFF SUPPORT</title>
+  <title>UITC SUPPORT</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
 <body>
 
   <div class="card text-center" style="padding:20px;">
-    <h3>UITC STAFF SUPPORT</h3>
+    <h3>UITC SUPPORT</h3>
   </div><br>
 
   <div class="container">
@@ -87,7 +87,7 @@ if (isset($_POST['submit'])) {
             Show Password
           </label>
           <div class="form-group">
-
+            <p>Not registered? <a href="register.php">Create Account</a></p>
             <input type="submit" name="submit" class="btn btn-success" value="Login">
           </div>
         </form>

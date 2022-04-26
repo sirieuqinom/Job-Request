@@ -25,18 +25,6 @@ if (empty($_SESSION["EMAIL"])) {
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <style>
-        tr[data-href] {
-            cursor: pointer;
-        }
-    </style>
-    <script>
-        $(document).ready(function() {
-            $(document.body).on("click", "tr[data-href]", function() {
-                window.location.href = this.dataset.href;
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -69,6 +57,7 @@ if (empty($_SESSION["EMAIL"])) {
                 <th scope="col">PROBLEM</th>
                 <th scope="col">USER</th>
                 <th scope="col">STATUS</th>
+                <th scope="col">ACTION</th>
             </tr>
         </thead>
 
@@ -101,34 +90,41 @@ if (empty($_SESSION["EMAIL"])) {
                                     $reqname = $rows['request'];
                                 }
                             }
-                            $dates = $row['dates'];
-                            $type = $row['account_type'];
-                            $email = $row['provided_email'];
-                            $pid = $row['provided_id'];
-                            $number = $row['local_number'];
-                            $software = $row['software'];
-                            $dept = $row['dept'];
-                            $problem = $row['problem'];
-                            $reqemail = $row['email'];
-                            $status = $row['status'];
+            ?>
 
-                            echo '
-                        <tr data-href = "data.html">
-                            <th scope="row">' . $i . '</th>
-                            <td>' . $reqname . '</td>
-                            <td>' . $dates . '</td>
-                            <td>' . $type . '</td>
-                            <td>' . $email . '</td>
-                            <td>' . $pid . '</td>
-                            <td>' . $number . '</td>
-                            <td>' . $software . '</td>
-                            <td>' . $dept . '</td>
-                            <td>' . $problem . '</td>
-                            <td>' . $reqemail . '</td>
-                            <td>' . $status . '</td>
+                            <tr>
+                                <th scope="row"><?php echo  $i; ?></th>
+                                <td><?php echo $reqname; ?></td>
+                                <td><?php echo $row['dates']; ?></td>
+                                <td><?php echo $row['account_type']; ?></td>
+                                <td><?php echo $row['provided_email']; ?></td>
+                                <td><?php echo $row['provided_id']; ?></td>
+                                <td><?php echo $row['local_number']; ?></td>
+                                <td><?php echo $row['software']; ?></td>
+                                <td><?php echo $row['dept']; ?></td>
+                                <td><?php echo $row['problem']; ?></td>
+                                <td><?php echo $row['email']; ?></td>
+                                <td>
+                                    <?php
+                                    if ($row['status'] == 1) {
+                                        $status = "Pending";
+                                    }
+                                    if ($row['status'] == 2) {
+                                        $status = "Accepted";
+                                    }
+                                    if ($row['status'] == 3) {
+                                        $status = "Ongoing";
+                                    }
+                                    if ($row['status'] == 4) {
+                                        $status = "Finished";
+                                    }
+                                    ?>
+                                    <?php echo $status; ?>
+                                </td>
 
-                        </tr>
-                        ';
+                                <td><a href="edit.php?nid=<?php echo $row['id']; ?>">Edit</a></td>
+                            </tr>
+            <?php
                         }
                     }
                 }
