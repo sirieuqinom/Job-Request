@@ -35,8 +35,8 @@ if (empty($_SESSION["EMAIL"])) {
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="admindashboard.php">Requests</a>
-                <a class="nav-item nav-link active" href="#">Staff</a>
-                <a class="nav-item nav-link" href="users.php">Users</a>
+                <a class="nav-item nav-link" href="staff.php">Staff</a>
+                <a class="nav-item nav-link active" href="#">Users</a>
                 <a class="nav-item nav-link" href="addaccount.php">Add Account</a>
                 <a class="nav-item nav-link" href="logout.php">Logout</a>
                 <a class="nav-item nav-link" style="pointer-events:none"> <?php echo $_SESSION["NAME"]; ?></a>
@@ -49,7 +49,6 @@ if (empty($_SESSION["EMAIL"])) {
                 <th scope="col">DB ID</th>
                 <th scope="col">NAME</th>
                 <th scope="col">EMAIL</th>
-                <th scope="col">ACTION</th>
             </tr>
         </thead>
 
@@ -57,29 +56,30 @@ if (empty($_SESSION["EMAIL"])) {
             <?php
             $sql = "SELECT * from users";
             $sqlQuery = mysqli_query($con, $sql);
-            ?>
-            <?php
-            if ($sqlQuery) { ?>
-                <?php
-                while ($row = mysqli_fetch_assoc($sqlQuery)) { ?>
-                    <?php
-                    $staff_id = $row['id'];
+
+            if ($sqlQuery) {
+                $num = 0;
+                while ($row = mysqli_fetch_assoc($sqlQuery)) {
+                    $num++;
+
                     $name = $row['name'];
                     $email = $row['email'];
                     $role = $row['role'];
-                    ?>
-                    <?php
-                    if ($role == "UITC staff") { ?>
-                        <tr>
-                            <td><?php echo $staff_id; ?></td>
-                            <td><?php echo $name; ?></td>
-                            <td><?php echo $email; ?></td>
-                            <td><a href="assign.php?uid=<?php echo $row['id']; ?>">assign task</a></td>
-                        </tr>
-            <?php
+
+                    if ($role == "user") {
+
+                        echo '
+                        <tr data-href = "hello.html">
+                          <th scope="row">' . $num . '</th>
+                          <td>' . $name . '</td>
+                          <td>' . $email . '</td>
+
+                        ';
                     }
                 }
-            } ?>
+            }
+
+            ?>
         </tbody>
     </table>
 </body>

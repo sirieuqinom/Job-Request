@@ -6,7 +6,7 @@ session_start();
 if (empty($_SESSION["EMAIL"])) {
     echo "
 			    <script>
-				    alert('SESSION ENDED. REDIRECTING TO LOGIN PAGE');
+				    alert('NO LOGIN DETECTED. REDIRECTING TO LOGIN PAGE');
 				    window.location = 'index.php';
 			    </script>
 			    ";
@@ -38,6 +38,8 @@ if (empty($_SESSION["EMAIL"])) {
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="#">Requests</a>
                 <a class="nav-item nav-link" href="staff.php">Staff</a>
+                <a class="nav-item nav-link" href="users.php">Users</a>
+                <a class="nav-item nav-link" href="addaccount.php">Add Account</a>
                 <a class="nav-item nav-link" href="logout.php">Logout</a>
                 <a class="nav-item nav-link" style="pointer-events:none"> <?php echo $_SESSION["NAME"]; ?></a>
             </div>

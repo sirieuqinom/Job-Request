@@ -4,7 +4,7 @@ session_start();
 if (empty($_SESSION["EMAIL"])) {
     echo "
 			    <script>
-				    alert('SESSION ENDED. REDIRECTING TO LOGIN PAGE');
+				    alert('NO LOGIN DETECTED. REDIRECTING TO LOGIN PAGE');
 				    window.location = 'index.php';
 			    </script>
 			    ";

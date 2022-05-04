@@ -6,13 +6,22 @@ session_start();
 if (empty($_SESSION["EMAIL"])) {
     echo "
 			    <script>
-				    alert('SESSION ENDED. REDIRECTING TO LOGIN PAGE');
+				    alert('NO LOGIN DETECTED. REDIRECTING TO LOGIN PAGE');
 				    window.location = 'index.php';
 			    </script>
 			    ";
 }
 ?>
+<style>
+    .disable_cancel {
+        pointer-events: none;
+        color: red;
+    }
 
+    .enable_cancel {
+        color: green;
+    }
+</style>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,6 +79,8 @@ if (empty($_SESSION["EMAIL"])) {
                 <th scope="col">DEPARTMENT</th>
                 <th scope="col">PROBLEM</th>
                 <th scope="col">STATUS</th>
+                <th scope="col">ACCEPTED BY</th>
+                <th scope="col">ACTION</th>
             </tr>
         </thead>
 
@@ -93,44 +104,60 @@ if (empty($_SESSION["EMAIL"])) {
                             $request = $rows['request'];
                         }
                     }
-                    $dates = $row['dates'];
-                    $type = $row['account_type'];
-                    $email = $row['provided_email'];
-                    $pid = $row['provided_id'];
-                    $number = $row['local_number'];
-                    $software = $row['software'];
-                    $dept = $row['dept'];
-                    $problem = $row['problem'];
-                    if ($row['status'] == 1) {
-                        $status = "Pending";
-                    }
-                    if ($row['status'] == 2) {
-                        $status = "Accepted";
-                    }
-                    if ($row['status'] == 3) {
-                        $status = "Ongoing";
-                    }
-                    if ($row['status'] == 4) {
-                        $status = "Finished";
-                    }
-                    echo '
-                        <tr data-href = "hello.html">
-                          <th scope="row">' . $num . '</th>
-                          <td>' . $request . '</td>
-                          <td>' . $dates . '</td>
-                          <td>' . $type . '</td>
-                          <td>' . $email . '</td>
-                          <td>' . $pid . '</td>
-                          <td>' . $number . '</td>
-                          <td>' . $software . '</td>
-                          <td>' . $dept . '</td>
-                          <td>' . $problem . '</td>
-                          <td>' . $status . '</td>
-                        </tr>
-                        ';
+            ?>
+
+                    <tr>
+                        <td><?php echo $num; ?></td>
+                        <td><?php echo $request; ?></td>
+                        <td><?php echo $row['dates']; ?></td>
+                        <td><?php echo $row['account_type']; ?></td>
+                        <td><?php echo $row['provided_email']; ?></td>
+                        <td><?php echo $row['provided_id']; ?></td>
+                        <td><?php echo $row['local_number']; ?></td>
+                        <td><?php echo $row['software']; ?></td>
+                        <td><?php echo $row['dept']; ?></td>
+                        <td><?php echo $row['problem']; ?></td>
+                        <td>
+                            <?php
+                            if ($row['status'] == 1) {
+                                $status = "Pending";
+                            }
+                            if ($row['status'] == 2) {
+                                $status = "Accepted";
+                            }
+                            if ($row['status'] == 3) {
+                                $status = "Ongoing";
+                            }
+                            if ($row['status'] == 4) {
+                                $status = "Finished";
+                            }
+                            ?>
+                            <?php echo $status ?>
+                        </td>
+                        <td><?php echo $row['accepted_by']; ?></td>
+                        <td>
+                            <?php
+                            if ($row['status'] == 1) { ?>
+                                <a href="cancel.php?uid=<?php echo $row['id']; ?>" class="enable_cancel">cancel request</a>
+                            <?php
+                            } ?>
+                            <?php
+                            if ($row['status'] == 2 || $row['status'] == 3) { ?>
+                                <a href="#" class="disable_cancel">accepted</a>
+                            <?php
+                            }
+                            ?>
+                            <?php
+                            if ($row['status'] == 4) { ?>
+                                <a href="#" class="disable_cancel">request finished</a>
+                            <?php
+                            }
+                            ?>
+                        </td>
+                    </tr>
+            <?php
                 }
             }
-
             ?>
         </tbody>
     </table>

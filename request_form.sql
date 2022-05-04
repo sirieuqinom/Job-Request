@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2022 at 09:38 AM
+-- Generation Time: May 04, 2022 at 09:20 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -38,9 +38,15 @@ CREATE TABLE `assigned_task` (
 --
 
 INSERT INTO `assigned_task` (`id`, `user_id`, `request_id`) VALUES
-(1, 1, 3),
-(2, 1, 1),
-(3, 4, 9);
+(7, 12, 1),
+(8, 12, 2),
+(9, 12, 3),
+(10, 12, 4),
+(11, 13, 5),
+(12, 13, 6),
+(13, 13, 7),
+(14, 13, 8),
+(15, 12, 5);
 
 -- --------------------------------------------------------
 
@@ -60,6 +66,7 @@ CREATE TABLE `requests` (
   `dept` varchar(255) NOT NULL,
   `problem` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT '1',
+  `accepted_by` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -67,14 +74,13 @@ CREATE TABLE `requests` (
 -- Dumping data for table `requests`
 --
 
-INSERT INTO `requests` (`id`, `request`, `dates`, `account_type`, `provided_email`, `provided_id`, `local_number`, `software`, `dept`, `problem`, `status`, `email`) VALUES
-(49, '1', 'May 1 - 15, 2021', '', '', '', '', '', '', '', '2', 'sample@something.com'),
-(50, '9', '', '', '', '', '', '', 'CLA', 'Need Cash', '1', 'sample2@something.com'),
-(51, '3', '', 'TUP Portal', 'giann825@gmail.com', 'tupm-18-0229', '', '', '', '', '4', 'sample@something.com'),
-(55, '1', 'July 25 - August 10, 2022', '', '', '', '', '', '', '', '1', 'sample2@something.com'),
-(56, '4', '', '', '', '', '111', '', 'CIT', '', '1', 'sample@something.com'),
-(57, '9', '', '', '', '', '', '', 'COS', 'GIB CASH NAO', '1', 'gerard@sample.com'),
-(58, '3', '', 'ERS Old', 'asd@mail.com', '1111', '', '', '', '', '2', 'sample@something.com');
+INSERT INTO `requests` (`id`, `request`, `dates`, `account_type`, `provided_email`, `provided_id`, `local_number`, `software`, `dept`, `problem`, `status`, `accepted_by`, `email`) VALUES
+(68, '1', 'january 1, 2022', '', '', '', '', '', '', '', '2', 'Giann', 'mark@sample.com'),
+(70, '3', '', 'TUP Portal', 'mark@sample.com', 'abc-123', '', '', '', '', '2', 'Giann', 'mark@sample.com'),
+(71, '4', '', '', '', '', '1234567890', '', 'CLA', '', '2', 'Giann', 'mark@sample.com'),
+(72, '5', '', '', '', '', '', 'MS word', 'CIE', '', '2', 'Gerard', 'mark@sample.com'),
+(74, '7', '', '', '', '', '', '', 'COS', '', '2', 'Gerard', 'mark@sample.com'),
+(75, '8', '', '', '', '', '', '', 'CAFA', 'Broken fan', '2', 'Gerard', 'mark@sample.com');
 
 -- --------------------------------------------------------
 
@@ -121,12 +127,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
-(1, 'Juan Gabrielle A. Gomez', 'juangabrielle.gomez@tup.edu.ph', '8fb5cfe922674e0f9faa46a92716f66bd67ad344', 'UITC staff'),
-(2, 'Yaeee', 'sample@something.com', '8cb2237d0679ca88db6464eac60da96345513964', 'user'),
-(3, 'new sample', 'sample2@something.com', '8cb2237d0679ca88db6464eac60da96345513964', 'user'),
-(4, 'new admin', 'admin@sample.com', '8cb2237d0679ca88db6464eac60da96345513964', 'UITC staff'),
-(6, 'gerard', 'gerard@sample.com', '8cb2237d0679ca88db6464eac60da96345513964', 'user'),
-(7, 'I AM ADMIN', 'admin@example.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin');
+(7, 'I AM ADMIN', 'admin@example.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin'),
+(12, 'Giann', 'giann@sample.com', '8cb2237d0679ca88db6464eac60da96345513964', 'UITC staff'),
+(13, 'Gerard', 'gerard@sample.com', '8cb2237d0679ca88db6464eac60da96345513964', 'UITC staff'),
+(14, 'Mark', 'mark@sample.com', '8cb2237d0679ca88db6464eac60da96345513964', 'user');
 
 --
 -- Indexes for dumped tables
@@ -164,13 +168,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `assigned_task`
 --
 ALTER TABLE `assigned_task`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `request_type`
@@ -182,7 +186,7 @@ ALTER TABLE `request_type`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

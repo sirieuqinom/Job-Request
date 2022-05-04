@@ -1,14 +1,17 @@
 <?php
 
 include 'config.php';
+session_start();
 
 $temp_id = $_GET['nid'];
+$name = $_SESSION["NAME"];
+
 
 if (isset($_POST['update'])) {
 
     $status = $_POST['status'];
 
-    $sql = "UPDATE requests set status = '$status' where id = '$temp_id'";
+    $sql = "UPDATE requests set accepted_by = '$name', status = '$status' where id = '$temp_id'";
     $query = mysqli_query($con, $sql);
 
     if ($query) {
@@ -40,8 +43,18 @@ if (isset($_POST['update'])) {
     ?>
     <?php
     if ($sqlselect) {
-        while ($row = mysqli_fetch_assoc($sqlselect)) { ?>
+        while ($row = mysqli_fetch_assoc($sqlselect)) {
+            $reqid = $row['request'];
 
+            $sqlreq = "SELECT * from request_type where request_id ='$reqid'";
+            $sqlreqQuery = mysqli_query($con, $sqlreq);
+            if ($sqlreqQuery) {
+                while ($rows = mysqli_fetch_assoc($sqlreqQuery)) {
+                    $request = $rows['request'];
+                }
+            }
+    ?>
+            <td><?php echo $request; ?></td> <br>
             <?php
             if (!empty($row['dates'])) { ?>
                 <td><?php echo $row['dates']; ?></td><br>
@@ -96,6 +109,7 @@ if (isset($_POST['update'])) {
             <?php
             }
             ?>
+            <td><?php echo $_SESSION['NAME']; ?></td>
     <?php
         }
     }
