@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2022 at 09:20 AM
+-- Generation Time: May 05, 2022 at 04:05 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -38,15 +38,8 @@ CREATE TABLE `assigned_task` (
 --
 
 INSERT INTO `assigned_task` (`id`, `user_id`, `request_id`) VALUES
-(7, 12, 1),
-(8, 12, 2),
-(9, 12, 3),
-(10, 12, 4),
-(11, 13, 5),
-(12, 13, 6),
-(13, 13, 7),
-(14, 13, 8),
-(15, 12, 5);
+(19, 12, 3),
+(20, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -67,6 +60,8 @@ CREATE TABLE `requests` (
   `problem` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT '1',
   `accepted_by` varchar(255) NOT NULL,
+  `date_submitted` varchar(255) NOT NULL,
+  `date_modified` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -74,13 +69,8 @@ CREATE TABLE `requests` (
 -- Dumping data for table `requests`
 --
 
-INSERT INTO `requests` (`id`, `request`, `dates`, `account_type`, `provided_email`, `provided_id`, `local_number`, `software`, `dept`, `problem`, `status`, `accepted_by`, `email`) VALUES
-(68, '1', 'january 1, 2022', '', '', '', '', '', '', '', '2', 'Giann', 'mark@sample.com'),
-(70, '3', '', 'TUP Portal', 'mark@sample.com', 'abc-123', '', '', '', '', '2', 'Giann', 'mark@sample.com'),
-(71, '4', '', '', '', '', '1234567890', '', 'CLA', '', '2', 'Giann', 'mark@sample.com'),
-(72, '5', '', '', '', '', '', 'MS word', 'CIE', '', '2', 'Gerard', 'mark@sample.com'),
-(74, '7', '', '', '', '', '', '', 'COS', '', '2', 'Gerard', 'mark@sample.com'),
-(75, '8', '', '', '', '', '', '', 'CAFA', 'Broken fan', '2', 'Gerard', 'mark@sample.com');
+INSERT INTO `requests` (`id`, `request`, `dates`, `account_type`, `provided_email`, `provided_id`, `local_number`, `software`, `dept`, `problem`, `status`, `accepted_by`, `date_submitted`, `date_modified`, `email`) VALUES
+(80, '1', '2022-May-05', '', '', '', '', '', '', '', '2', 'Giann', '2022-May-05', '2022-May-05', 'mark@sample.com');
 
 -- --------------------------------------------------------
 
@@ -168,13 +158,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `assigned_task`
 --
 ALTER TABLE `assigned_task`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `request_type`

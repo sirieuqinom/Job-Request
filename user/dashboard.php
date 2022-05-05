@@ -80,7 +80,10 @@ if (empty($_SESSION["EMAIL"])) {
                 <th scope="col">PROBLEM</th>
                 <th scope="col">STATUS</th>
                 <th scope="col">ACCEPTED BY</th>
+                <th scope="col">DATE SUBMITTED</th>
+                <th scope="col">DATE MODIFIED</th>
                 <th scope="col">ACTION</th>
+                <th scope="col">VIEW</th>
             </tr>
         </thead>
 
@@ -135,6 +138,8 @@ if (empty($_SESSION["EMAIL"])) {
                             <?php echo $status ?>
                         </td>
                         <td><?php echo $row['accepted_by']; ?></td>
+                        <td><?php echo $row['date_submitted']; ?></td>
+                        <td><?php echo $row['date_modified']; ?></td>
                         <td>
                             <?php
                             if ($row['status'] == 1) { ?>
@@ -149,12 +154,14 @@ if (empty($_SESSION["EMAIL"])) {
                             ?>
                             <?php
                             if ($row['status'] == 4) { ?>
-                                <a href="#" class="disable_cancel">request finished</a>
+                                <a href="cancel.php?uid=<?php echo $row['id']; ?>">click to remove</a>
                             <?php
                             }
                             ?>
                         </td>
+                        <td><a href="view.php?uid=<?php echo $row['id']; ?>">view</a></td>
                     </tr>
+
             <?php
                 }
             }

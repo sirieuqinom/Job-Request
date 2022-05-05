@@ -57,6 +57,8 @@ if (empty($_SESSION["EMAIL"])) {
                 <th scope="col">PROBLEM</th>
                 <th scope="col">USER</th>
                 <th scope="col">STATUS</th>
+                <th scope="col">DATE SUBMITTED</th>
+                <th scope="col">DATE MODIFIED</th>
                 <th scope="col">ACTION</th>
             </tr>
         </thead>
@@ -121,7 +123,8 @@ if (empty($_SESSION["EMAIL"])) {
                                     ?>
                                     <?php echo $status; ?>
                                 </td>
-
+                                <td><?php echo $row['date_submitted'];?></td>
+                                <td><?php echo $row['date_modified'];?></td>
                                 <td><a href="edit.php?nid=<?php echo $row['id']; ?>">Edit</a></td>
                             </tr>
             <?php

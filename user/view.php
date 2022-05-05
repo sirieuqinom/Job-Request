@@ -1,30 +1,10 @@
 <?php
 
-include 'config.php';
-session_start();
-
-$temp_id = $_GET['nid'];
-$name = $_SESSION["NAME"];
-$date = date("Y-M-d");
-
-if (isset($_POST['update'])) {
-
-    $status = $_POST['status'];
-
-    $sql = "UPDATE requests set accepted_by = '$name', status = '$status', date_modified = '$date' where id = '$temp_id'";
-    $query = mysqli_query($con, $sql);
-
-    if ($query) {
-        echo "
-         <script>
-          alert('Update Success');
-          window.location = 'staffdashboard.php';
-        </script>
-        ";
-    }
-}
+    include 'config.php';
+    $temp_id = $_GET['uid'];
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +17,8 @@ if (isset($_POST['update'])) {
 </head>
 
 <body>
+
+    <a href="dashboard.php">return</a><br>
     <?php
     $select = "SELECT * from requests where id = '$temp_id'";
     $sqlselect = mysqli_query($con, $select);
@@ -113,18 +95,7 @@ if (isset($_POST['update'])) {
         }
     }
     ?>
-
-
-    <a href="staffdashboard.php">return to dashboard</a>
-    <form action="" method="POST">
-        <select name="status" id="status">
-            <option value="1">pending</option>
-            <option value="2">accepted</option>
-            <option value="3">ongoing</option>
-            <option value="4">finished</option>
-        </select>
-        <button type="submit" name="update">Update</button>
-    </form>
+    
 </body>
 
 </html>

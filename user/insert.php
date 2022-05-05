@@ -46,13 +46,14 @@ if (isset($_POST['submit'])) {
         $dept = $_POST['others'];
         $problem = $_POST['specified_request'];
     }
+    $date = date("Y-M-d");
     $sess = $_SESSION["EMAIL"];
     $sql = "INSERT into requests 
                 (request,dates,account_type,provided_email,provided_id,
-                dept,local_number,software,problem,email) 
+                dept,local_number,software,problem, date_submitted, email) 
                 VALUES 
                 ('$request','$date','$account_type','$provided_email','$provided_id',
-                '$dept','$local_number','$software','$problem','$sess')";
+                '$dept','$local_number','$software','$problem','$date','$sess')";
     $query = mysqli_query($con, $sql);
 
     if ($query) {

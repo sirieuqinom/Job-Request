@@ -59,6 +59,8 @@ if (empty($_SESSION["EMAIL"])) {
                 <th scope="col">DEPARTMENT</th>
                 <th scope="col">PROBLEM</th>
                 <th scope="col">STATUS</th>
+                <th scope="col">DATE SUBMITTED</th>
+                <th scope="col">DATE MODIFIED</th>
             </tr>
         </thead>
 
@@ -100,6 +102,8 @@ if (empty($_SESSION["EMAIL"])) {
                     if ($row['status'] == 4) {
                         $status = "Finished";
                     }
+                    $date_sub = $row['date_submitted'];
+                    $date_mod = $row['date_modified'];
                     echo '
                         <tr data-href = "hello.html">
                           <th scope="row">' . $num . '</th>
@@ -113,6 +117,8 @@ if (empty($_SESSION["EMAIL"])) {
                           <td>' . $dept . '</td>
                           <td>' . $problem . '</td>
                           <td>' . $status . '</td>
+                          <td>' . $date_sub . '</td>
+                          <td>' . $date_mod . '</td>
                         </tr>
                         ';
                 }
