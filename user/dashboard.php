@@ -15,7 +15,7 @@ if (empty($_SESSION["EMAIL"])) {
 <style>
     .disable_cancel {
         pointer-events: none;
-        color: red;
+        color: gray;
     }
 
     .enable_cancel {
@@ -159,7 +159,19 @@ if (empty($_SESSION["EMAIL"])) {
                             }
                             ?>
                         </td>
-                        <td><a href="view.php?uid=<?php echo $row['id']; ?>">view</a></td>
+                        <td>
+                        <?php
+                            if ($row['status'] == 1 || $row['status'] == 2 || $row['status'] == 3) { ?>
+                                <a href="view.php?uid=<?php echo $row['id']; ?>" class="disable_cancel">view</a>
+                            <?php
+                            } ?>
+                            <?php
+                            if ($row['status'] == 4) { ?>
+                                <a href="view.php?uid=<?php echo $row['id']; ?>" class="enable_cancel">view</a>
+                            <?php
+                            }
+                            ?>
+                        </td>
                     </tr>
 
             <?php
