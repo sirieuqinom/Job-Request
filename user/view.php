@@ -51,9 +51,9 @@
         </div>
     </nav>
     <a href="dashboard.php">return</a><br>
-    <form action="generate_pdf.php" method="post">
+    <form action="generate_pdf.php?=<?php echo $temp_id;?>" method="post">
         <button type="submit" name="btn_pdf"> PDF </button>
-    </form>
+    
     <?php
     $select = "SELECT * from requests where id = '$temp_id'";
     $sqlselect = mysqli_query($con, $select);
@@ -75,54 +75,63 @@
             <?php
             if (!empty($row['dates'])) { ?>
                 <td><?php echo $row['dates']; ?></td><br>
+                <input type="hidden" name="hidden-id" value="<?php echo $temp_id;?>">
             <?php
             }
             ?>
             <?php
             if (!empty($row['account_type'])) { ?>
                 <td><?php echo $row['account_type']; ?></td><br>
+                <input type="hidden" name="hidden-id" value="<?php echo $temp_id;?>">
             <?php
             }
             ?>
             <?php
             if (!empty($row['provided_email'])) { ?>
                 <td><?php echo $row['provided_email']; ?></td><br>
+                <input type="hidden" name="hidden-id" value="<?php echo $temp_id;?>">
             <?php
             }
             ?>
             <?php
             if (!empty($row['provided_id'])) { ?>
                 <td><?php echo $row['provided_id']; ?></td><br>
+                <input type="hidden" name="hidden-id" value="<?php echo $temp_id;?>">
             <?php
             }
             ?>
             <?php
             if (!empty($row['local_number'])) { ?>
                 <td><?php echo $row['local_number']; ?></td><br>
+                <input type="hidden" name="hidden-id" value="<?php echo $temp_id;?>">
             <?php
             }
             ?>
             <?php
             if (!empty($row['softwware'])) { ?>
                 <td><?php echo $row['software']; ?></td><br>
+                <input type="hidden" name="hidden-id" value="<?php echo $temp_id;?>">
             <?php
             }
             ?>
             <?php
             if (!empty($row['dept'])) { ?>
                 <td><?php echo $row['dept']; ?></td><br>
+                <input type="hidden" name="hidden-id" value="<?php echo $temp_id;?>">
             <?php
             }
             ?>
             <?php
             if (!empty($row['problem'])) { ?>
                 <td><?php echo $row['problem']; ?></td><br>
+                <input type="hidden" name="hidden-id" value="<?php echo $temp_id;?>">
             <?php
             }
             ?>
             <?php
             if (!empty($row['email'])) { ?>
                 <td><?php echo $row['email']; ?></td><br>
+                <input type="hidden" name="hidden-id" value="<?php echo $temp_id;?>">
             <?php
             }
             ?>
@@ -130,7 +139,7 @@
         }
     }
     ?>
-    
+    </form>
 </body>
 
 </html>

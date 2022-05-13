@@ -17,9 +17,12 @@ if (isset($_POST['submit'])) {
     $email    = $con->real_escape_string($_POST['email']);
     $password = $con->real_escape_string(sha1($_POST['password']));
     $name     = $con->real_escape_string($_POST['name']);
+    $uid      = $con->real_escape_string($_POST['user_id']);
+    $uoc      = $con->real_escape_string($_POST['user_office_course']);
+    $bionum   = $con->real_escape_string($_POST['bio_num']);
     $role     = $con->real_escape_string($_REQUEST['role']);
 
-    $query  = "INSERT INTO users (name,email,password,role) VALUES ('$name','$email','$password','$role')";
+    $query  = "INSERT INTO users (name,user_id,user_office_course,bio_num,email,password,role) VALUES ('$name','$uid','$uoc','$bionum','$email','$password','$role')";
     $result = $con->query($query);
 
     if ($result) {
@@ -66,6 +69,18 @@ if (isset($_POST['submit'])) {
           <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" class="form-control" name="name" placeholder="Enter Name" required="">
+          </div>
+          <div>
+            <label for="user_id">enter your ID number:</label>
+            <input type="text" class="form-control" name="user_id" placeholder="Enter ID" required="">
+          </div>
+          <div>
+            <label for="user_office_course">enter office or course</label>
+            <input type="text" class="form-control" name="user_office_course" placeholder="Enter office/course" required="">
+          </div>
+          <div>
+            <label for="bio_num">enter biometrics num (if employee only!!!):</label>
+            <input type="number" class="form-control" name="bio_num" placeholder="Enter Biometric Number">
           </div>
           <div class="form-group">
             <label for="email">Email:</label>

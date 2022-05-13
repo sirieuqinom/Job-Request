@@ -10,9 +10,16 @@ $date = date("Y-M-d");
 if (isset($_POST['update'])) {
 
     $status = $_POST['status'];
-
-    $sql = "UPDATE requests set accepted_by = '$name', status = '$status', date_modified = '$date' where id = '$temp_id'";
-    $query = mysqli_query($con, $sql);
+    if($status == 2){
+        $adate = date("Y-M-d");
+        $sql = "UPDATE requests set accepted_by = '$name', status = '$status', date_accepted = '$adate', date_modified = '$date' where id = '$temp_id'";
+        $query = mysqli_query($con, $sql);
+    }
+    else{
+        $sql = "UPDATE requests set accepted_by = '$name', status = '$status', date_modified = '$date' where id = '$temp_id'";
+        $query = mysqli_query($con, $sql);
+    }
+    
 
     if ($query) {
         echo "

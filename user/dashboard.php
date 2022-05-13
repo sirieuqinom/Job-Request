@@ -11,6 +11,9 @@ if (empty($_SESSION["EMAIL"])) {
 			    </script>
 			    ";
 }
+
+
+    
 ?>
 <style>
     .disable_cancel {
