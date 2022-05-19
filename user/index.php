@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['ID'])) {
   if ($_SESSION["ROLE"] == "user") {
-    header("Location:dashboard.php");
+    header("Location:dbo.php");
     exit();
   }
 }
@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="index.css">
 <body>
 </head>
 

@@ -1,8 +1,6 @@
 <?php
-
 include 'config.php';
 session_start();
-
 if (empty($_SESSION["EMAIL"])) {
     echo "
 			    <script>
@@ -11,23 +9,20 @@ if (empty($_SESSION["EMAIL"])) {
 			    </script>
 			    ";
 }
-
-
-    
+ 
 ?>
 <style>
     .disable_cancel {
         pointer-events: none;
         color: gray;
     }
-
     .enable_cancel {
         color: green;
     }
 </style>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,7 +33,7 @@ if (empty($_SESSION["EMAIL"])) {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="index.css">
     <style>
         tr[data-href] {
             cursor: pointer;
@@ -54,6 +49,7 @@ if (empty($_SESSION["EMAIL"])) {
 </head>
 
 <body>
+<div class="bg">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.php">Job Request</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,37 +60,14 @@ if (empty($_SESSION["EMAIL"])) {
                 <a class="nav-item nav-link" href="request.php">Submit request</a>
                 <a class="nav-item nav-link" href="logout.php">Logout</a>
                 <a class="nav-item nav-link" style="pointer-events:none"> <?php echo $_SESSION["EMAIL"]; ?></a>
+
             </div>
         </div>
     </nav>
-
-
-    <table class="table table-bordered table-hover table-responsive-xl">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">REQUESTS</th>
-                <th scope="col">DATES</th>
-                <th scope="col">ACCOUNT TYPE</th>
-                <th scope="col">PROVIDED EMAIL</th>
-                <th scope="col">PROVIDED ID</th>
-                <th scope="col">LOCAL NUMBER</th>
-                <th scope="col">SOFTWARE</th>
-                <th scope="col">DEPARTMENT</th>
-                <th scope="col">PROBLEM</th>
-                <th scope="col">STATUS</th>
-                <th scope="col">ACCEPTED BY</th>
-                <th scope="col">DATE SUBMITTED</th>
-                <th scope="col">DATE MODIFIED</th>
-                <th scope="col">ACTION</th>
-                <th scope="col">VIEW</th>
-            </tr>
-        </thead>
-
+    <table class="table table-hover table-responsive-xl">
         <tbody>
             <?php
             $sess = $_SESSION["EMAIL"];
-
             $sql = "SELECT * from requests where email ='$sess'";
             $sqlQuery = mysqli_query($con, $sql);
 
@@ -112,79 +85,33 @@ if (empty($_SESSION["EMAIL"])) {
                         }
                     }
             ?>
-
-                    <tr>
-                        <td><?php echo $num; ?></td>
-                        <td><?php echo $request; ?></td>
-                        <td><?php echo $row['dates']; ?></td>
-                        <td><?php echo $row['account_type']; ?></td>
-                        <td><?php echo $row['provided_email']; ?></td>
-                        <td><?php echo $row['provided_id']; ?></td>
-                        <td><?php echo $row['local_number']; ?></td>
-                        <td><?php echo $row['software']; ?></td>
-                        <td><?php echo $row['dept']; ?></td>
-                        <td><?php echo $row['problem']; ?></td>
-                        <td>
-                            <?php
-                            if ($row['status'] == 1) {
-                                $status = "Pending";
-                            }
-                            if ($row['status'] == 2) {
-                                $status = "Accepted";
-                            }
-                            if ($row['status'] == 3) {
-                                $status = "Ongoing";
-                            }
-                            if ($row['status'] == 4) {
-                                $status = "Finished";
-                            }
-                            ?>
-                            <?php echo $status ?>
-                        </td>
-                        <td><?php echo $row['accepted_by']; ?></td>
-                        <td><?php echo $row['date_submitted']; ?></td>
-                        <td><?php echo $row['date_modified']; ?></td>
-                        <td>
-                            <?php
-                            if ($row['status'] == 1) { ?>
-                                <a href="cancel.php?uid=<?php echo $row['id']; ?>" class="enable_cancel">cancel request</a>
-                            <?php
-                            } ?>
-                            <?php
-                            if ($row['status'] == 2 || $row['status'] == 3) { ?>
-                                <a href="#" class="disable_cancel">accepted</a>
-                            <?php
-                            }
-                            ?>
-                            <?php
-                            if ($row['status'] == 4) { ?>
-                                <a href="cancel.php?uid=<?php echo $row['id']; ?>">click to remove</a>
-                            <?php
-                            }
-                            ?>
-                        </td>
-                        <td>
-                        <?php
-                            if ($row['status'] == 1 || $row['status'] == 2 || $row['status'] == 3) { ?>
-                                <a href="view.php?uid=<?php echo $row['id']; ?>" class="disable_cancel">view</a>
-                            <?php
-                            } ?>
-                            <?php
-                            if ($row['status'] == 4) { ?>
-                                <a href="view.php?uid=<?php echo $row['id']; ?>" class="enable_cancel">view</a>
-                            <?php
-                            }
-                            ?>
-                        </td>
-                    </tr>
-
+            <tr class='clickable-row' data-href='view.php?uid=<?php echo $row['id']; ?>'>
+                <td><?php echo $request; ?><br><br>
+                    <?php echo "Requested: ", $row['date_submitted']; ?><br>
+                    <?php  echo "Accepted by: ", $row['accepted_by']; ?></td>     
+                <td><br>
+                    <?php
+                        if ($row['status'] == 1) {
+                            $status = "PENDING";
+                        }
+                        if ($row['status'] == 2) {
+                            $status = "ACCEPTED";
+                        }
+                        if ($row['status'] == 3) {
+                            $status = "ONGOING";
+                        }
+                        if ($row['status'] == 4) {
+                            $status = "FINISHED";
+                        }
+                    ?>
+                    <?php echo $status ?>
+                </td>
+            </tr>
             <?php
                 }
             }
             ?>
         </tbody>
     </table>
-
 </body>
-
 </html>

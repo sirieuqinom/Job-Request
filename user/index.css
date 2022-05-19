@@ -9,6 +9,7 @@ body, html {
     font-size: 40px;
     font-weight: bold;
   }
+
   .bg {
     background-image: url(".././assets/bg.png");
     height: 100%;
@@ -18,11 +19,23 @@ body, html {
     background-size: cover;
     overflow: auto;
   }
+  .table{
+    font-size: 14px;
+  }
+  .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: black;
+    color: #7d1111; 
+    border-color: #7d1111;
+  }
   .con{
     height:100%;
     background: rgba(102,99,100, 0.4);
     overflow: auto;
   }
+  tbody>tr>:nth-child(2){
+    font-weight: bold;
+    text-align:center;
+   }
   .input-group-addon{
     color:whitesmoke; 
     background-color: #b60404;
@@ -43,5 +56,3 @@ body, html {
   .reg{
     color: #b1fed4;
   }
-
-  
